@@ -84,19 +84,32 @@
 
 
 
-<meta name="description" content="项目部署到服务器报：java.lang.NoSuchFieldError: ALIAS_TO_ENTITY_MAP
-错误分析：运行时的JDK环境低于编译时的JDK环境。">
+<meta name="description" content="折腾了N天的IPV6，总算是抽出一晚上的时间来彻底解决了。整理了网上找的一些解决方案。我们先来看下苹果官方对于IPV6的要求及如何测试(苹果官方说明:开发注意事项和如何测试IPV6 Only的支持)
+
+注册IPV6隧道服务1、打开https://www.tunnelbroker.net注册一个账号2、登录到 tunnelbroker.net 后，请点击左侧导航的 Create Regular Tu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java.lang.NoSuchFieldError:ALIAS_TO_ENTITY_MAP">
-<meta property="og:url" content="http://17wpw.com/2017/03/02/302/index.html">
+<meta property="og:title" content="为阿里云ECS（CentOS6）配置IPv6隧道地址">
+<meta property="og:url" content="http://17wpw.com/2017/04/06/为阿里云ECS（CentOS6）配置IPv6隧道地址/index.html">
 <meta property="og:site_name" content="You define me">
-<meta property="og:description" content="项目部署到服务器报：java.lang.NoSuchFieldError: ALIAS_TO_ENTITY_MAP
-错误分析：运行时的JDK环境低于编译时的JDK环境。">
-<meta property="og:updated_time" content="2017-03-02T14:06:37.000Z">
+<meta property="og:description" content="折腾了N天的IPV6，总算是抽出一晚上的时间来彻底解决了。整理了网上找的一些解决方案。我们先来看下苹果官方对于IPV6的要求及如何测试(苹果官方说明:开发注意事项和如何测试IPV6 Only的支持)
+
+注册IPV6隧道服务1、打开https://www.tunnelbroker.net注册一个账号2、登录到 tunnelbroker.net 后，请点击左侧导航的 Create Regular Tu">
+<meta property="og:image" content="http://bbs.aliyun.com/attachment/Fid_239/239_1477160476054779_76f80727fda488f.png?60">
+<meta property="og:image" content="http://bbs.aliyun.com/attachment/Fid_239/239_1477160476054779_ea6b3a452a40d46.png?70">
+<meta property="og:image" content="http://bbs.aliyun.com/attachment/Fid_239/239_1477160476054779_6c59c8ff7448d01.png?13">
+<meta property="og:image" content="http://bbs.aliyun.com/attachment/Fid_239/239_1477160476054779_00e3b3c8d34dbea.png?24">
+<meta property="og:image" content="http://bbs.aliyun.com/attachment/Fid_239/239_1477160476054779_9310091426bf592.png?37">
+<meta property="og:image" content="http://bbs.aliyun.com/attachment/Fid_239/239_1477160476054779_1b85457fe793fd6.png?32">
+<meta property="og:image" content="http://bbs.aliyun.com/attachment/Fid_239/239_1477160476054779_a484e9ce7195ba9.png?30">
+<meta property="og:image" content="http://17wpw.com/2017/04/06/为阿里云ECS（CentOS6）配置IPv6隧道地址/12323.png">
+<meta property="og:image" content="http://17wpw.com/2017/04/06/为阿里云ECS（CentOS6）配置IPv6隧道地址/WechatIMG1.jpeg">
+<meta property="og:updated_time" content="2017-04-06T15:44:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java.lang.NoSuchFieldError:ALIAS_TO_ENTITY_MAP">
-<meta name="twitter:description" content="项目部署到服务器报：java.lang.NoSuchFieldError: ALIAS_TO_ENTITY_MAP
-错误分析：运行时的JDK环境低于编译时的JDK环境。">
+<meta name="twitter:title" content="为阿里云ECS（CentOS6）配置IPv6隧道地址">
+<meta name="twitter:description" content="折腾了N天的IPV6，总算是抽出一晚上的时间来彻底解决了。整理了网上找的一些解决方案。我们先来看下苹果官方对于IPV6的要求及如何测试(苹果官方说明:开发注意事项和如何测试IPV6 Only的支持)
+
+注册IPV6隧道服务1、打开https://www.tunnelbroker.net注册一个账号2、登录到 tunnelbroker.net 后，请点击左侧导航的 Create Regular Tu">
+<meta name="twitter:image" content="http://bbs.aliyun.com/attachment/Fid_239/239_1477160476054779_76f80727fda488f.png?60">
 
 
 
@@ -124,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://17wpw.com/2017/03/02/302/"/>
+  <link rel="canonical" href="http://17wpw.com/2017/04/06/为阿里云ECS（CentOS6）配置IPv6隧道地址/"/>
 
 
 
 
 
-  <title> java.lang.NoSuchFieldError:ALIAS_TO_ENTITY_MAP | You define me </title>
+  <title> 为阿里云ECS（CentOS6）配置IPv6隧道地址 | You define me </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -241,7 +254,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/03/02/302/">
+  <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/04/06/为阿里云ECS（CentOS6）配置IPv6隧道地址/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Jax">
@@ -265,7 +278,7 @@
             
             
               
-                java.lang.NoSuchFieldError:ALIAS_TO_ENTITY_MAP
+                为阿里云ECS（CentOS6）配置IPv6隧道地址
               
             
           </h1>
@@ -278,8 +291,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-02T15:18:05+08:00">
-                2017-03-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-06T22:24:51+08:00">
+                2017-04-06
               </time>
             
 
@@ -294,8 +307,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2017/03/02/302/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/02/302/" itemprop="commentCount"></span>
+                <a href="/2017/04/06/为阿里云ECS（CentOS6）配置IPv6隧道地址/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/06/为阿里云ECS（CentOS6）配置IPv6隧道地址/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -321,10 +334,46 @@
       
 
       
-        <p>项目部署到服务器报：java.lang.NoSuchFieldError: ALIAS_TO_ENTITY_MAP</p>
-<p>错误分析：<br>运行时的JDK环境低于编译时的JDK环境。<br><a id="more"></a><br>解决方案：</p>
-<h1 id="gt-把tomcat8-换成-tomcat7-！"><a href="#gt-把tomcat8-换成-tomcat7-！" class="headerlink" title="&gt;把tomcat8 换成 tomcat7 ！"></a>&gt;把tomcat8 换成 tomcat7 ！</h1><p><strong>我去。。不是说JDK编译环境的问题？</strong></p>
-
+        <p>折腾了N天的IPV6，总算是抽出一晚上的时间来彻底解决了。整理了网上找的一些解决方案。<br>我们先来看下苹果官方对于IPV6的要求及如何测试(<a href="https://developer.apple.com/library/content/documentation/NetworkingInternetWeb/Conceptual/NetworkingOverview/UnderstandingandPreparingfortheIPv6Transition/UnderstandingandPreparingfortheIPv6Transition.html#//apple_ref/doc/uid/TP40010220-CH213-SW1" target="_blank" rel="external">苹果官方说明:开发注意事项和如何测试IPV6 Only的支持</a>)</p>
+<hr>
+<h2 id="注册IPV6隧道服务"><a href="#注册IPV6隧道服务" class="headerlink" title="注册IPV6隧道服务"></a>注册IPV6隧道服务</h2><p>1、打开<a href="https://www.tunnelbroker.net" target="_blank" rel="external">https://www.tunnelbroker.net</a>注册一个账号<br>2、登录到 tunnelbroker.net 后，请点击左侧导航的 Create Regular Tunnel ，输入您的IPv4地址，选择 HongKong 隧道服务器，来创建一个新的ipv6隧道配置<br><img src="http://bbs.aliyun.com/attachment/Fid_239/239_1477160476054779_76f80727fda488f.png?60"><br>3、此例，创建好的ipv6隧道地址为：2001:470:18:401::2<br><img src="http://bbs.aliyun.com/attachment/Fid_239/239_1477160476054779_ea6b3a452a40d46.png?70"><br>4、然后，请点击 Example Configureations ，里边会给出在不同系统里可执行的命令，目的是创建ipv6隧道<br><a id="more"></a></p>
+<h2 id="为阿里云ECS（CentOS7）配置IPv6隧道地址"><a href="#为阿里云ECS（CentOS7）配置IPv6隧道地址" class="headerlink" title="为阿里云ECS（CentOS7）配置IPv6隧道地址"></a>为阿里云ECS（CentOS7）配置IPv6隧道地址</h2><ol>
+<li><p>编辑 /etc/sysctl.conf 文件，将其中三条禁用IPv6的设置更改为:  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">net.ipv6.conf.all.disable_ipv6 = 0</div><div class="line">net.ipv6.conf.default.disable_ipv6 = 0</div><div class="line">net.ipv6.conf.lo.disable_ipv6 = 0</div></pre></td></tr></table></figure>
+</li>
+<li><p>再运行 sysctl -p 的命令，启用IPv6<br><img src="http://bbs.aliyun.com/attachment/Fid_239/239_1477160476054779_6c59c8ff7448d01.png?13"></p>
+</li>
+<li><p>转到 tunnelbroker.net 网站，在 Example Configurateions 里选择 Linux-route2 的配置方法，示例命令如下<br><img src="http://bbs.aliyun.com/attachment/Fid_239/239_1477160476054779_00e3b3c8d34dbea.png?24"></p>
+</li>
+</ol>
+<h2 id="为阿里云ECS（CentOS6）配置IPv6隧道地址"><a href="#为阿里云ECS（CentOS6）配置IPv6隧道地址" class="headerlink" title="为阿里云ECS（CentOS6）配置IPv6隧道地址"></a>为阿里云ECS（CentOS6）配置IPv6隧道地址</h2><ol>
+<li>CentOS 6.5 64位系统，默认没有启用IPv6地址<br><img src="http://bbs.aliyun.com/attachment/Fid_239/239_1477160476054779_9310091426bf592.png?37"></li>
+<li><p>编辑文件，/etc/modprobe.d/disable_ipv6.conf，将其中的三行都注释掉   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># alias net-pf-10 off</div><div class="line"># alias ipv6 off</div><div class="line"># options ipv6 disable=1</div></pre></td></tr></table></figure>
+</li>
+<li><p>编辑文件，/etc/sysconfig/network，将其中的 NETWORKING_IPV6=no 改为 NETWORKING_IPV6=yes，</p>
+</li>
+<li>重启系统，以让更改生效。系统重启后，运行 ifconfig 命令，可以看到IPv6的地址<br><img src="http://bbs.aliyun.com/attachment/Fid_239/239_1477160476054779_1b85457fe793fd6.png?32"></li>
+<li>执行 HE 隧道地址配置例子中的 Linux-net-tools 命令，如本例是：<br><img src="http://bbs.aliyun.com/attachment/Fid_239/239_1477160476054779_a484e9ce7195ba9.png?30"></li>
+</ol>
+<h2 id="配置域名解析"><a href="#配置域名解析" class="headerlink" title="配置域名解析"></a>配置域名解析</h2><ol>
+<li>让域名支持ipv6,将AAAA记录解析到支持ipv6的服务器上  <img src="/2017/04/06/为阿里云ECS（CentOS6）配置IPv6隧道地址/12323.png" alt="This is an demo image" title="This is an demo image"></li>
+<li>ipv6地址取自tunnelbroker.net的Client IPv6 Address</li>
+</ol>
+<h2 id="测试网站是否能通过ipv6访问"><a href="#测试网站是否能通过ipv6访问" class="headerlink" title="测试网站是否能通过ipv6访问"></a>测试网站是否能通过ipv6访问</h2><blockquote>
+<p>打开网址<a href="http://ipv6-test.com/validate.php" target="_blank" rel="external">http://ipv6-test.com/validate.php</a>  </p>
+</blockquote>
+<ol>
+<li><p>Apache，提示无法访问服务：web server is unreachable</p>
+<img src="/2017/04/06/为阿里云ECS（CentOS6）配置IPv6隧道地址/WechatIMG1.jpeg" alt="WechatIMG1.jpeg" title="">
+<p>解决方案：编辑/etc/sysconfig/network-scripts/ifcfg-eth0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">IPV6INIT=yes</div><div class="line">IPV6ADDR=2a05:4f8:111:40a3::2/64</div><div class="line">IPV6_DEFAULTGW=fe80::1</div><div class="line">IPV6_DEFAULTDEV=eth0</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看端口情况/usr/sbin/lsof -i | grep -i httpd </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">httpd     13722       apache    4u  IPv6 152015784      0t0  TCP *:http (LISTEN)</div><div class="line">httpd     13722       apache    6u  IPv6 152015788      0t0  TCP *:https (LISTEN)</div><div class="line">httpd     13723       apache    4u  IPv6 152015784      0t0  TCP *:http (LISTEN)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<!-- more -->
       
     </div>
 
@@ -350,8 +399,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/24/224/" rel="next" title="IntelliJ IDEA tomcat 内存溢出">
-                <i class="fa fa-chevron-left"></i> IntelliJ IDEA tomcat 内存溢出
+              <a href="/2017/03/23/服务器碰到的问题/" rel="next" title="服务器碰到的问题">
+                <i class="fa fa-chevron-left"></i> 服务器碰到的问题
               </a>
             
           </div>
@@ -359,10 +408,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/03/linux常用命令/" rel="prev" title="linux常用命令">
-                linux常用命令 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -388,8 +433,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/02/302/"
-           data-title="java.lang.NoSuchFieldError:ALIAS_TO_ENTITY_MAP" data-url="http://17wpw.com/2017/03/02/302/">
+      <div class="ds-thread" data-thread-key="2017/04/06/为阿里云ECS（CentOS6）配置IPv6隧道地址/"
+           data-title="为阿里云ECS（CentOS6）配置IPv6隧道地址" data-url="http://17wpw.com/2017/04/06/为阿里云ECS（CentOS6）配置IPv6隧道地址/">
       </div>
     
   </div>
@@ -510,7 +555,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#gt-把tomcat8-换成-tomcat7-！"><span class="nav-number">1.</span> <span class="nav-text">>把tomcat8 换成 tomcat7 ！</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#注册IPV6隧道服务"><span class="nav-number">1.</span> <span class="nav-text">注册IPV6隧道服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为阿里云ECS（CentOS7）配置IPv6隧道地址"><span class="nav-number">2.</span> <span class="nav-text">为阿里云ECS（CentOS7）配置IPv6隧道地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为阿里云ECS（CentOS6）配置IPv6隧道地址"><span class="nav-number">3.</span> <span class="nav-text">为阿里云ECS（CentOS6）配置IPv6隧道地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置域名解析"><span class="nav-number">4.</span> <span class="nav-text">配置域名解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试网站是否能通过ipv6访问"><span class="nav-number">5.</span> <span class="nav-text">测试网站是否能通过ipv6访问</span></a></li></ol></div>
             
 
           </div>
