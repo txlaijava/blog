@@ -1,2 +1,2 @@
-# blog
-My Blog Repository
+# 我的blog源码
++ 使用HEXO + NEXT
