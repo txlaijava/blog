@@ -1681,7 +1681,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff7550;
+  background: #ff01c2;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2855,10 +2855,13 @@ pre .javascript .function {
     text-align: justify;
   }
 }
-.body {
-  background: url("http://demo.admui.com/public/images/login.jpg") no-repeat center center;
+body {
+  background: url("../../images/login.jpg") no-repeat center center;
 /* background-color: white; */
   background-repeat: no-repeat;
   background-size: 100% auto;
   background-attachment: fixed;
+}
+.main-inner {
+  opacity: 0.9;
 }
