@@ -258,6 +258,240 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/05/07/IDEACPU/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jax">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/class.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="You define me">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/07/IDEACPU/" itemprop="url">IDEACPU</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-07T21:42:57+08:00">
+                2017-05-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://stackoverflow.com/questions/21595289/intellij-idea-13-ce-consuming-lots-of-cpu" target="_blank" rel="external">http://stackoverflow.com/questions/21595289/intellij-idea-13-ce-consuming-lots-of-cpu</a></p>
+<p>C:\Program Files (x86)\JetBrains\IntelliJ IDEA 14.1.3\bin<br>idea.exe.vmoptions<br>idea64.exe.vmoptions</p>
+<p>Mac user<br><a href="http://stackoverflow.com/questions/20545435/why-is-the-new-version-of-intellij-idea-so-slow?rq=1" target="_blank" rel="external">http://stackoverflow.com/questions/20545435/why-is-the-new-version-of-intellij-idea-so-slow?rq=1</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/04/26/mac系统下安装Composer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jax">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/class.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="You define me">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/26/mac系统下安装Composer/" itemprop="url">mac系统下安装Composer</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-26T15:45:54+08:00">
+                2017-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>mac下直接用命令行模式下载Composer<br>使用 curl 指令下载：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -sS https://getcomposer.org/installer | php</div></pre></td></tr></table></figure></p>
+<p>或是沒有安裝 curl ，也可以用 php 指令下载：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php -r &quot;readfile(&apos;https://getcomposer.org/installer&apos;);&quot; | php</div></pre></td></tr></table></figure></p>
+<p>手动下载Composer<br>地址：<a href="https://getcomposer.org/composer.phar" target="_blank" rel="external">https://getcomposer.org/composer.phar</a></p>
+<p>当你下载了 composer.phar 后，可以将它放在目录中，但每次当你建立新目录时，你必須再复制一个副本到新目录中，这样比较麻烦。所以最佳做法是将它放到 usr/local/bin 目录中中，成为全域指令。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv composer.phar /usr/local/bin/composer</div></pre></td></tr></table></figure></p>
+<p>这样就可以直接在终端使用composer命令了。。。。</p>
+<p>如果碰到提示没有权限</p>
+<blockquote>
+<p>Permission denied</p>
+</blockquote>
+<p>执行：</p>
+<blockquote>
+<p>chmod +x /usr/local/bin/composer  </p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/04/06/为阿里云ECS（CentOS6）配置IPv6隧道地址/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -704,6 +938,12 @@
 </blockquote>
 </li>
 <li>dd</li>
+</ul>
+<ul>
+<li>查看文件夹占用磁盘<blockquote>
+<p>du -h –max-depth=1</p>
+</blockquote>
+</li>
 </ul>
 
           
@@ -1285,144 +1525,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/01/06/My-New-Post/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jax">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/class.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="You define me">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/01/06/My-New-Post/" itemprop="url">Mac安装MySQL 5.7.9版本 出现sql_mode=only_full_group_by问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-06T00:19:05+08:00">
-                2017-01-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>解决办法：<br>MySQL版本：5.7.16 </p>
-<p>OS版本：OS X EI Capitan（ 10.11.5 ）</p>
-<p>设置编码时需要修改/etc/my.cnf的内容，但是在/etc/下并没有my.cnf，<br>但是，在/usr/local/mysql/support-files下有一个my-default.cnf，只要把这个文件复制到/etc/下，再改名就好了。</p>
-<hr>
-<p>另外，如何解决<strong>Mac Mysql 乱码问题</strong>：</p>
-<p>顺便说一下修改的步骤： </p>
-<ol>
-<li><p>我修改的并不是utf8，而是utf8mb4，区别请自行查询 </p>
-</li>
-<li><p>先登录到mysql：<br><code>mysql -u 数据库帐号 -p</code></p>
-</li>
-<li><p>查看默认安装的字符集：<br><code>mysql&gt; show variables like ‘%char%’;</code>（分号属于命令行） </p>
-</li>
-<li><p>使用775权限：<br><code>sudo chmod 775 /etc/my.cnf</code></p>
-</li>
-<li><p>使用vim打开my.cnf，编辑：<br><code>vi /etc/my.cnf</code> </p>
-</li>
-<li><p>在[mysqld]上边添加<br><code><br>default-character-set=utf8<br></code></p>
-</li>
-</ol>
-<hr>
-<p>在[mysqld]下边添加：<br><code>character-set-server=utf8</code></p>
-<p>键入:wq保存并退出，再次进入查看，看到</p>
-<p><pre>character_set_database   | utf8</pre><br>就是修改成功了</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1467,7 +1574,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1480,7 +1587,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
