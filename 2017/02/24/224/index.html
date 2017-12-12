@@ -67,16 +67,16 @@
 
 
 
-<meta name="description" content="解决IntelliJ IDEA tomcat 报内存溢出错误：java.lang.OutOfMemoryError: PermGen space在这个位置设置：JAVA_OPTS-server -Xms800m -Xmx800m -XX:PermSize=256m XX:MaxPermSize=512m -XX:MaxNewSize=512m 如图所示：  但是有个问题就是设置完了之后，debug">
+<meta name="description" content="解决IntelliJ IDEA tomcat 报内存溢出错误：java.lang.OutOfMemoryError: PermGen space在这个如图位置设置：-server -XX:PermSize=128M -XX:MaxPermSize=256m如图所示：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IntelliJ IDEA tomcat 内存溢出">
 <meta property="og:url" content="http://17wpw.com/2017/02/24/224/index.html">
 <meta property="og:site_name" content="You define me">
-<meta property="og:description" content="解决IntelliJ IDEA tomcat 报内存溢出错误：java.lang.OutOfMemoryError: PermGen space在这个位置设置：JAVA_OPTS-server -Xms800m -Xmx800m -XX:PermSize=256m XX:MaxPermSize=512m -XX:MaxNewSize=512m 如图所示：  但是有个问题就是设置完了之后，debug">
-<meta property="og:updated_time" content="2017-04-06T15:44:58.000Z">
+<meta property="og:description" content="解决IntelliJ IDEA tomcat 报内存溢出错误：java.lang.OutOfMemoryError: PermGen space在这个如图位置设置：-server -XX:PermSize=128M -XX:MaxPermSize=256m如图所示：">
+<meta property="og:updated_time" content="2017-12-12T10:11:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IntelliJ IDEA tomcat 内存溢出">
-<meta name="twitter:description" content="解决IntelliJ IDEA tomcat 报内存溢出错误：java.lang.OutOfMemoryError: PermGen space在这个位置设置：JAVA_OPTS-server -Xms800m -Xmx800m -XX:PermSize=256m XX:MaxPermSize=512m -XX:MaxNewSize=512m 如图所示：  但是有个问题就是设置完了之后，debug">
+<meta name="twitter:description" content="解决IntelliJ IDEA tomcat 报内存溢出错误：java.lang.OutOfMemoryError: PermGen space在这个如图位置设置：-server -XX:PermSize=128M -XX:MaxPermSize=256m如图所示：">
 
 
 
@@ -322,10 +322,7 @@
       
 
       
-        <p>解决IntelliJ IDEA tomcat 报内存溢出错误：<br><code><br>java.lang.OutOfMemoryError: PermGen space<br></code><br>在这个位置设置：<br><code>JAVA_OPTS</code><br><code>-server -Xms800m -Xmx800m -XX:PermSize=256m XX:MaxPermSize=512m -XX:MaxNewSize=512m<br></code></p>
-<p>如图所示：<br></p>
-<hr>
-<p>但是有个问题就是设置完了之后，debug就不管用了。估计是要跟上面那一条写到一起。</p>
+        <p>解决IntelliJ IDEA tomcat 报内存溢出错误：<br><code><br>java.lang.OutOfMemoryError: PermGen space<br></code><br>在这个如图位置设置：<br><code>-server -XX:PermSize=128M -XX:MaxPermSize=256m<br></code><br>如图所示：<br></p>
 
       
     </div>
@@ -446,15 +443,24 @@
           
 
           
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
           
             
             
             <div class="site-state-item site-state-tags">
-              
-                <span class="site-state-item-count">7</span>
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
-              
+              </a>
             </div>
           
 

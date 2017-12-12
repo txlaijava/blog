@@ -1169,10 +1169,7 @@
       
         
           
-            <p>解决IntelliJ IDEA tomcat 报内存溢出错误：<br><code><br>java.lang.OutOfMemoryError: PermGen space<br></code><br>在这个位置设置：<br><code>JAVA_OPTS</code><br><code>-server -Xms800m -Xmx800m -XX:PermSize=256m XX:MaxPermSize=512m -XX:MaxNewSize=512m<br></code></p>
-<p>如图所示：<br></p>
-<hr>
-<p>但是有个问题就是设置完了之后，debug就不管用了。估计是要跟上面那一条写到一起。</p>
+            <p>解决IntelliJ IDEA tomcat 报内存溢出错误：<br><code><br>java.lang.OutOfMemoryError: PermGen space<br></code><br>在这个如图位置设置：<br><code>-server -XX:PermSize=128M -XX:MaxPermSize=256m<br></code><br>如图所示：<br></p>
 
           
         
@@ -1581,15 +1578,24 @@
           
 
           
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
           
             
             
             <div class="site-state-item site-state-tags">
-              
-                <span class="site-state-item-count">7</span>
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
-              
+              </a>
             </div>
           
 
