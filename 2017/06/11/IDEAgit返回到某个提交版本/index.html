@@ -74,10 +74,12 @@
 <meta property="og:url" content="http://17wpw.com/2017/06/11/IDEAgit返回到某个提交版本/index.html">
 <meta property="og:site_name" content="You define me">
 <meta property="og:description" content="找到需要返回的提交历史，右击选择   随便更改一行代码。使用命令行强行提交代码()    12git commit -fgit push">
+<meta property="og:image" content="http://17wpw.com/2017/06/11/IDEAgit返回到某个提交版本/0A15C07E-9B7A-4FF2-9008-F84BA5900DF9.png">
 <meta property="og:updated_time" content="2017-06-28T14:46:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IDEA git返回到某个提交版本">
 <meta name="twitter:description" content="找到需要返回的提交历史，右击选择   随便更改一行代码。使用命令行强行提交代码()    12git commit -fgit push">
+<meta name="twitter:image" content="http://17wpw.com/2017/06/11/IDEAgit返回到某个提交版本/0A15C07E-9B7A-4FF2-9008-F84BA5900DF9.png">
 
 
 
@@ -324,7 +326,7 @@
 
       
         <ul>
-<li>找到需要返回的提交历史，右击选择  </li>
+<li>找到需要返回的提交历史，右击选择  <img src="/2017/06/11/IDEAgit返回到某个提交版本/0A15C07E-9B7A-4FF2-9008-F84BA5900DF9.png" alt="0A15C07E-9B7A-4FF2-9008-F84BA5900DF9.png" title=""></li>
 <li>随便更改一行代码。使用命令行强行提交代码()    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git commit -f</div><div class="line">git push</div></pre></td></tr></table></figure></li>
 </ul>
 
@@ -407,7 +409,8 @@
           
   <div class="comments" id="comments">
     
-      <div id="lv-container" data-id="city" data-uid="MTAyMC8yODEwMS80Njc0"></div>
+       
+         <div id="gitment-container"></div>
     
   </div>
 
@@ -548,7 +551,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -690,21 +693,31 @@
 
 
   
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
-  
 
 
 
 
+
+
+   
+   
+   
+   
+   <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+   <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+   
+       <script type="text/javascript">
+           var gitment = new Gitment({
+               id: window.location.pathname, 
+               owner: 'txlaijava',
+               repo: 'https://github.com/txlaijava/blog',
+               oauth: {
+                   client_id: 'b8c057d5498a9da21769',
+                   client_secret: '1d131739f0c95ad8b2c775a35f0417a65362813e',
+               }});
+           gitment.render('gitment-container');
+       </script>
+   
 
 
   

@@ -74,10 +74,13 @@
 <meta property="og:url" content="http://17wpw.com/2017/07/06/如何找出nginx配置文件的所在位置/index.html">
 <meta property="og:site_name" content="You define me">
 <meta property="og:description" content="有时候在操作一台陌生的nginx服务器的时候，需要知道配置文件在哪里，下面教大家一种简单的方法：    1.先找出nginx可执行文件的路径   1ps -ef | grep nginx    图中显示的就是nginx可执行文件的路径    2.找出配置文件路径   1/usr/local/openresty/nginx/sbin/nginx -t  这样配置文件的路径就显示出来啦~  3.加载配">
+<meta property="og:image" content="http://17wpw.com/2017/07/06/如何找出nginx配置文件的所在位置/DB04B59F-AE55-49C4-858F-2B350AF6107A.png">
+<meta property="og:image" content="http://17wpw.com/2017/07/06/如何找出nginx配置文件的所在位置/20160115161228479.jpg">
 <meta property="og:updated_time" content="2017-07-06T16:08:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何找出nginx配置文件的所在位置">
 <meta name="twitter:description" content="有时候在操作一台陌生的nginx服务器的时候，需要知道配置文件在哪里，下面教大家一种简单的方法：    1.先找出nginx可执行文件的路径   1ps -ef | grep nginx    图中显示的就是nginx可执行文件的路径    2.找出配置文件路径   1/usr/local/openresty/nginx/sbin/nginx -t  这样配置文件的路径就显示出来啦~  3.加载配">
+<meta name="twitter:image" content="http://17wpw.com/2017/07/06/如何找出nginx配置文件的所在位置/DB04B59F-AE55-49C4-858F-2B350AF6107A.png">
 
 
 
@@ -328,13 +331,13 @@
 <p>1.先找出nginx可执行文件的路径 </p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps -ef | grep nginx</div></pre></td></tr></table></figure>
-  
+<img src="/2017/07/06/如何找出nginx配置文件的所在位置/DB04B59F-AE55-49C4-858F-2B350AF6107A.png" alt="DB04B59F-AE55-49C4-858F-2B350AF6107A.png" title="">  
 <p>图中显示的就是nginx可执行文件的路径  </p>
 <blockquote>
 <p>2.找出配置文件路径 </p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/openresty/nginx/sbin/nginx -t</div></pre></td></tr></table></figure>
-
+<img src="/2017/07/06/如何找出nginx配置文件的所在位置/20160115161228479.jpg" alt="20160115161228479.jpg" title="">
 <p>这样配置文件的路径就显示出来啦~</p>
 <blockquote>
 <p>3.加载配置。</p>
@@ -419,7 +422,8 @@
           
   <div class="comments" id="comments">
     
-      <div id="lv-container" data-id="city" data-uid="MTAyMC8yODEwMS80Njc0"></div>
+       
+         <div id="gitment-container"></div>
     
   </div>
 
@@ -560,7 +564,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -702,21 +706,31 @@
 
 
   
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
-  
 
 
 
 
+
+
+   
+   
+   
+   
+   <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+   <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+   
+       <script type="text/javascript">
+           var gitment = new Gitment({
+               id: window.location.pathname, 
+               owner: 'txlaijava',
+               repo: 'https://github.com/txlaijava/blog',
+               oauth: {
+                   client_id: 'b8c057d5498a9da21769',
+                   client_secret: '1d131739f0c95ad8b2c775a35f0417a65362813e',
+               }});
+           gitment.render('gitment-container');
+       </script>
+   
 
 
   

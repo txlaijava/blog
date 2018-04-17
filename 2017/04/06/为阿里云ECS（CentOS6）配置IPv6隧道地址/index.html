@@ -80,6 +80,8 @@
 <meta property="og:image" content="http://bbs.aliyun.com/attachment/Fid_239/239_1477160476054779_9310091426bf592.png?37">
 <meta property="og:image" content="http://bbs.aliyun.com/attachment/Fid_239/239_1477160476054779_1b85457fe793fd6.png?32">
 <meta property="og:image" content="http://bbs.aliyun.com/attachment/Fid_239/239_1477160476054779_a484e9ce7195ba9.png?30">
+<meta property="og:image" content="http://17wpw.com/2017/04/06/为阿里云ECS（CentOS6）配置IPv6隧道地址/12323.png">
+<meta property="og:image" content="http://17wpw.com/2017/04/06/为阿里云ECS（CentOS6）配置IPv6隧道地址/WechatIMG1.jpeg">
 <meta property="og:updated_time" content="2017-04-20T01:48:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="为阿里云ECS（CentOS6）配置IPv6隧道地址">
@@ -353,7 +355,7 @@
 <li>执行 HE 隧道地址配置例子中的 Linux-net-tools 命令，如本例是：<br><img src="http://bbs.aliyun.com/attachment/Fid_239/239_1477160476054779_a484e9ce7195ba9.png?30"></li>
 </ol>
 <h2 id="配置域名解析"><a href="#配置域名解析" class="headerlink" title="配置域名解析"></a>配置域名解析</h2><ol>
-<li>让域名支持ipv6,将AAAA记录解析到支持ipv6的服务器上  </li>
+<li>让域名支持ipv6,将AAAA记录解析到支持ipv6的服务器上  <img src="/2017/04/06/为阿里云ECS（CentOS6）配置IPv6隧道地址/12323.png" alt="This is an demo image" title="This is an demo image"></li>
 <li>ipv6地址取自tunnelbroker.net的Client IPv6 Address</li>
 </ol>
 <h2 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h2><blockquote>
@@ -361,7 +363,7 @@
 </blockquote>
 <ol>
 <li><p>Apache，提示无法访问服务：web server is unreachable</p>
-
+<img src="/2017/04/06/为阿里云ECS（CentOS6）配置IPv6隧道地址/WechatIMG1.jpeg" alt="WechatIMG1.jpeg" title="">
 <p>解决方案：编辑/etc/sysconfig/network-scripts/ifcfg-eth0</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">IPV6INIT=yes</div><div class="line">IPV6ADDR=2a05:4f8:111:40a3::2/64</div><div class="line">IPV6_DEFAULTGW=fe80::1</div><div class="line">IPV6_DEFAULTDEV=eth0</div></pre></td></tr></table></figure>
 </li>
@@ -448,7 +450,8 @@
           
   <div class="comments" id="comments">
     
-      <div id="lv-container" data-id="city" data-uid="MTAyMC8yODEwMS80Njc0"></div>
+       
+         <div id="gitment-container"></div>
     
   </div>
 
@@ -614,7 +617,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -756,21 +759,31 @@
 
 
   
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
-  
 
 
 
 
+
+
+   
+   
+   
+   
+   <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+   <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+   
+       <script type="text/javascript">
+           var gitment = new Gitment({
+               id: window.location.pathname, 
+               owner: 'txlaijava',
+               repo: 'https://github.com/txlaijava/blog',
+               oauth: {
+                   client_id: 'b8c057d5498a9da21769',
+                   client_secret: '1d131739f0c95ad8b2c775a35f0417a65362813e',
+               }});
+           gitment.render('gitment-container');
+       </script>
+   
 
 
   

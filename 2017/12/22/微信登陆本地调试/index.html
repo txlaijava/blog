@@ -73,12 +73,12 @@
 <meta property="og:url" content="http://17wpw.com/2017/12/22/微信登陆本地调试/index.html">
 <meta property="og:site_name" content="You define me">
 <meta property="og:description" content="开通微信沙盒账号 开通链接：https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login   扫码登陆之后可获得微信测试接口的appid、appsecret（上线之后替换成正式的即可）。沙盒环境拥有所有微信公众号的接口权限。    配置微信登陆授权域名 在接口权限表中找到 网页服务-网页帐号-修改。点击修改填写本地环境ip地址（或者本">
-<meta property="og:image" content="http://17wpw.com/2017/12/22/微信登陆本地调试/WechatIMG62.jpg">
-<meta property="og:updated_time" content="2017-12-22T09:34:21.000Z">
+<meta property="og:image" content="http://17wpw.com/images/WechatIMG62.jpg">
+<meta property="og:updated_time" content="2017-12-22T09:38:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信登陆本地调试">
 <meta name="twitter:description" content="开通微信沙盒账号 开通链接：https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login   扫码登陆之后可获得微信测试接口的appid、appsecret（上线之后替换成正式的即可）。沙盒环境拥有所有微信公众号的接口权限。    配置微信登陆授权域名 在接口权限表中找到 网页服务-网页帐号-修改。点击修改填写本地环境ip地址（或者本">
-<meta name="twitter:image" content="http://17wpw.com/2017/12/22/微信登陆本地调试/WechatIMG62.jpg">
+<meta name="twitter:image" content="http://17wpw.com/images/WechatIMG62.jpg">
 
 
 
@@ -329,9 +329,9 @@
 <li>扫码登陆之后可获得微信测试接口的appid、appsecret（上线之后替换成正式的即可）。沙盒环境拥有所有微信公众号的接口权限。  </li>
 </ul>
 <h3 id="配置微信登陆授权域名"><a href="#配置微信登陆授权域名" class="headerlink" title="配置微信登陆授权域名"></a>配置微信登陆授权域名</h3><ul>
-<li>在接口权限表中找到 网页服务-网页帐号-修改。点击修改填写本地环境ip地址（或者本地外网映射域名，推荐使用内外网穿透工具 <a href="https://natapp.cn/#download）；" target="_blank" rel="external">https://natapp.cn/#download）；</a><img src="/2017/12/22/微信登陆本地调试/WechatIMG62.jpg" alt="This is an demo image" title="This is an demo image">
-</li>
+<li>在接口权限表中找到 网页服务-网页帐号-修改。点击修改填写本地环境ip地址（或者本地外网映射域名，推荐使用内外网穿透工具 <a href="https://natapp.cn/#download）；" target="_blank" rel="external">https://natapp.cn/#download）；</a><br><img src="/images/WechatIMG62.jpg" alt=""></li>
 </ul>
+<a id="more"></a>
 
       
     </div>
@@ -402,7 +402,8 @@
           
   <div class="comments" id="comments">
     
-      <div id="lv-container" data-id="city" data-uid="MTAyMC8yODEwMS80Njc0"></div>
+       
+         <div id="gitment-container"></div>
     
   </div>
 
@@ -568,7 +569,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -710,21 +711,31 @@
 
 
   
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
-  
 
 
 
 
+
+
+   
+   
+   
+   
+   <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+   <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+   
+       <script type="text/javascript">
+           var gitment = new Gitment({
+               id: window.location.pathname, 
+               owner: 'txlaijava',
+               repo: 'https://github.com/txlaijava/blog',
+               oauth: {
+                   client_id: 'b8c057d5498a9da21769',
+                   client_secret: '1d131739f0c95ad8b2c775a35f0417a65362813e',
+               }});
+           gitment.render('gitment-container');
+       </script>
+   
 
 
   
