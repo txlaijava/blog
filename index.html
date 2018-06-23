@@ -258,6 +258,261 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2018/06/23/苹果开发者账号问题-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jax">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/class.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="You define me">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/23/苹果开发者账号问题-1/" itemprop="url">苹果开发者账号问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-23T17:06:25+08:00">
+                2018-06-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="苹果开发者账号更新协议，需要新增手机号码。"><a href="#苹果开发者账号更新协议，需要新增手机号码。" class="headerlink" title="苹果开发者账号更新协议，需要新增手机号码。"></a>苹果开发者账号更新协议，需要新增手机号码。</h3><p>The Apple Developer Program License Agreement has been updated.</p>
+<p>In order to access certain membership resources, you must accept the latest license agreement. First, you’ll need to update the mobile phone number associated with your Apple ID. Your mobile phone number must be based in your country/region. Edit this number in the Account section of appleid.apple.com, and return to your developer account to continue.</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>可以点击按钮进入appid.apple.com官网进行更改手机号码信息，但是需要回答安全问题，如忘记安全问题最便捷的办法是：<br>找一台iphone设备，点击设置，icloud账户，登出，再登入您的开发者账号，点击“姓名、电子邮箱、电话号码“，新增一个手机号码。完成之后再登入开发者平台，则可以看到同意协议选项。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2018/06/23/CentOS服务器验证码乱码解决/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jax">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/class.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="You define me">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/23/CentOS服务器验证码乱码解决/" itemprop="url">CentOS服务器验证码乱码解决</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-23T17:01:00+08:00">
+                2018-06-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>线上环境验证码乱码乱码，本地环境正常，判断应该是由于线上linux系统缺少字体文件造成的。验证码使用的：Times New Roman 字体。那么到本地字体文件夹找到对应的字体文件，上传到服务器中。</p>
+<h3 id="Linux-CentOS-7-安装字体库"><a href="#Linux-CentOS-7-安装字体库" class="headerlink" title="Linux CentOS 7 安装字体库"></a>Linux CentOS 7 安装字体库</h3><p>在CentOS 4.x开始用fontconfig来安装字体库，所以输入以下命令即可：</p>
+<blockquote>
+<p>yum -y install fontconfig</p>
+</blockquote>
+<p>当看到下图的提示信息时说明已安装成功：<br><img src="https://img-blog.csdn.net/20160525145746674"></p>
+<p>这时在/usr/shared目录就可以看到fonts和fontconfig目录了（之前是没有的）：<br><img src="https://img-blog.csdn.net/20160525145907583"></p>
+<h3 id="添加中文字体"><a href="#添加中文字体" class="headerlink" title="添加中文字体"></a>添加中文字体</h3><p>首先在/usr/shared/fonts目录下新建一个目录chinese：<br><img src="https://img-blog.csdn.net/20160525151335431"></p>
+<p>然后就是将上面的两个字体上传至/usr/shared/fonts/chinese目录下即可： </p>
+<p>紧接着需要修改chinese目录的权限：</p>
+<blockquote>
+<p>chmod -R 755 /usr/share/fonts/chinese</p>
+</blockquote>
+<p>接下来需要安装ttmkfdir来搜索目录中所有的字体信息，并汇总生成fonts.scale文件，输入命令：</p>
+<blockquote>
+<p>yum -y install ttmkfdir</p>
+</blockquote>
+<p>然后执行ttmkfdir命令即可：</p>
+<blockquote>
+<p>ttmkfdir -e /usr/share/X11/fonts/encodings/encodings.dir</p>
+</blockquote>
+<p>最后一步就是修改字体配置文件了，首先通过编辑器打开配置文件：</p>
+<blockquote>
+<p>vi /etc/fonts/fonts.conf</p>
+</blockquote>
+<p>可以看到一个Font list，即字体列表，在这里需要把我们添加的中文字体位置加进去： </p>
+<p><img src="https://img-blog.csdn.net/20160525162529288"></p>
+<p>然后输入:wq保存退出，最后别忘了刷新内存中的字体缓存，这样就不用reboot重启了：</p>
+<blockquote>
+<p>fc-cache</p>
+</blockquote>
+<p>这样所有的步骤就算完成了，最后再次通过fc-list看一下字体列表： </p>
+<p><img src="https://img-blog.csdn.net/20160525164056044"></p>
+<p>可以看到已经成功安装上了中文字体，至此安装过程就全部结束，再次查看可以发现中文样式和内容均已可以正常显示了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/12/22/微信登陆本地调试/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1212,228 +1467,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/06/11/IDEAgit返回到某个提交版本/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jax">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/class.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="You define me">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/11/IDEAgit返回到某个提交版本/" itemprop="url">IDEA git返回到某个提交版本</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-11T12:02:19+08:00">
-                2017-06-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>找到需要返回的提交历史，右击选择  <img src="/2017/06/11/IDEAgit返回到某个提交版本/0A15C07E-9B7A-4FF2-9008-F84BA5900DF9.png" alt="0A15C07E-9B7A-4FF2-9008-F84BA5900DF9.png" title=""></li>
-<li>随便更改一行代码。使用命令行强行提交代码()    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git commit -f</div><div class="line">git push</div></pre></td></tr></table></figure></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/06/06/解决百度ueditor图片上传问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jax">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/class.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="You define me">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/06/解决百度ueditor图片上传问题/" itemprop="url">解决百度ueditor图片上传问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-06T20:07:50+08:00">
-                2017-06-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1482,7 +1515,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1504,7 +1537,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
