@@ -1370,8 +1370,26 @@
         
           
             <ul>
-<li>查看端口占用<blockquote>
+<li><p>查看端口占用</p>
+<blockquote>
 <p><code>netstat -apn | grep 80</code></p>
+</blockquote>
+</li>
+<li><p>查看系统中文件的使用情况</p>
+<blockquote>
+<p>df -h</p>
+</blockquote>
+</li>
+<li>查看当前目录下各个文件及目录占用空间大小<blockquote>
+<p>du -sh *</p>
+</blockquote>
+</li>
+<li>方法一：切换到要删除的目录，删除目录下的所有文件<blockquote>
+<p>rm -f *</p>
+</blockquote>
+</li>
+<li>方法二：删除logs文件夹下的所有文件，而不删除文件夹本身  <blockquote>
+<p>rm -rf log/*</p>
 </blockquote>
 </li>
 </ul>
@@ -1391,11 +1409,22 @@
 <p>netstat -noa | grep 80  </p>
 </blockquote>
 </li>
-<li>dd</li>
 </ul>
 <ul>
 <li>查看文件夹占用磁盘<blockquote>
-<p>du -h –max-depth=1</p>
+<p>du -h –max-depth=1 /home</p>
+</blockquote>
+</li>
+<li>查看系统中文件的使用情况<blockquote>
+<p>df -h</p>
+</blockquote>
+</li>
+<li>查看当前目录下各个文件及目录占用空间大小<blockquote>
+<p>du -sh *</p>
+</blockquote>
+</li>
+<li>清空文件内容<blockquote>
+<p>echo “” &gt; 文件名</p>
 </blockquote>
 </li>
 </ul>
@@ -1503,7 +1532,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

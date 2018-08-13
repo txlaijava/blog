@@ -51,7 +51,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Jax's blog" />
+  <meta name="keywords" content="linux," />
 
 
 
@@ -67,16 +67,17 @@
 
 
 
-<meta name="description" content="查看端口占用 netstat -apn | grep 80     关闭进程  killall -9 java   查找文件包含字符串  grep -rn “hello,world!”   :表示当前目录所有文件，也可以是某个文件名-r 是递归查找-n 是显示行号-R 查找所有文件包含子目录-i 忽略大小写   端口占用情况 netstat -noa | grep 80     dd   查看文">
+<meta name="description" content="查看端口占用  netstat -apn | grep 80   查看系统中文件的使用情况  df -h   查看当前目录下各个文件及目录占用空间大小 du -sh *   方法一：切换到要删除的目录，删除目录下的所有文件 rm -f *   方法二：删除logs文件夹下的所有文件，而不删除文件夹本身   rm -rf log/*     关闭进程  killall -9 java   查找文件">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux常用命令">
 <meta property="og:url" content="http://17wpw.com/2017/03/03/linux常用命令/index.html">
 <meta property="og:site_name" content="You define me">
-<meta property="og:description" content="查看端口占用 netstat -apn | grep 80     关闭进程  killall -9 java   查找文件包含字符串  grep -rn “hello,world!”   :表示当前目录所有文件，也可以是某个文件名-r 是递归查找-n 是显示行号-R 查找所有文件包含子目录-i 忽略大小写   端口占用情况 netstat -noa | grep 80     dd   查看文">
-<meta property="og:updated_time" content="2017-10-26T12:15:02.000Z">
+<meta property="og:description" content="查看端口占用  netstat -apn | grep 80   查看系统中文件的使用情况  df -h   查看当前目录下各个文件及目录占用空间大小 du -sh *   方法一：切换到要删除的目录，删除目录下的所有文件 rm -f *   方法二：删除logs文件夹下的所有文件，而不删除文件夹本身   rm -rf log/*     关闭进程  killall -9 java   查找文件">
+<meta property="og:updated_time" content="2018-07-31T09:53:33.455Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux常用命令">
-<meta name="twitter:description" content="查看端口占用 netstat -apn | grep 80     关闭进程  killall -9 java   查找文件包含字符串  grep -rn “hello,world!”   :表示当前目录所有文件，也可以是某个文件名-r 是递归查找-n 是显示行号-R 查找所有文件包含子目录-i 忽略大小写   端口占用情况 netstat -noa | grep 80     dd   查看文">
+<meta name="twitter:description" content="查看端口占用  netstat -apn | grep 80   查看系统中文件的使用情况  df -h   查看当前目录下各个文件及目录占用空间大小 du -sh *   方法一：切换到要删除的目录，删除目录下的所有文件 rm -f *   方法二：删除logs文件夹下的所有文件，而不删除文件夹本身   rm -rf log/*     关闭进程  killall -9 java   查找文件">
 
 
 
@@ -323,8 +324,26 @@
 
       
         <ul>
-<li>查看端口占用<blockquote>
+<li><p>查看端口占用</p>
+<blockquote>
 <p><code>netstat -apn | grep 80</code></p>
+</blockquote>
+</li>
+<li><p>查看系统中文件的使用情况</p>
+<blockquote>
+<p>df -h</p>
+</blockquote>
+</li>
+<li>查看当前目录下各个文件及目录占用空间大小<blockquote>
+<p>du -sh *</p>
+</blockquote>
+</li>
+<li>方法一：切换到要删除的目录，删除目录下的所有文件<blockquote>
+<p>rm -f *</p>
+</blockquote>
+</li>
+<li>方法二：删除logs文件夹下的所有文件，而不删除文件夹本身  <blockquote>
+<p>rm -rf log/*</p>
 </blockquote>
 </li>
 </ul>
@@ -344,11 +363,22 @@
 <p>netstat -noa | grep 80  </p>
 </blockquote>
 </li>
-<li>dd</li>
 </ul>
 <ul>
 <li>查看文件夹占用磁盘<blockquote>
-<p>du -h –max-depth=1</p>
+<p>du -h –max-depth=1 /home</p>
+</blockquote>
+</li>
+<li>查看系统中文件的使用情况<blockquote>
+<p>df -h</p>
+</blockquote>
+</li>
+<li>查看当前目录下各个文件及目录占用空间大小<blockquote>
+<p>du -sh *</p>
+</blockquote>
+</li>
+<li>清空文件内容<blockquote>
+<p>echo “” &gt; 文件名</p>
 </blockquote>
 </li>
 </ul>
@@ -378,6 +408,12 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+        </div>
       
 
       
@@ -488,7 +524,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
