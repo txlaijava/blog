@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="阿里云,centos,linux," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="ssh密钥登陆相较于传统的用户名和密码认证方式，SSH 密钥对有以下特点：    仅适用于 Linux 实例。     SSH 密钥对登录认证更为安全可靠。     便于远程登录大量 Linux 实例，方便管理。      什么是 SSH 密钥对SSH 密钥对是通过一种加密算法生成的一对密钥：一个对外界公开，称为“公钥”；另一个您自己保留，称为“私钥”。 如果您已经将公钥配置在 Linux 实例中">
+<meta name="keywords" content="阿里云,centos,linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿里云服务器使用ssh密钥登陆">
+<meta property="og:url" content="http://17wpw.com/2017/06/26/阿里云服务器使用ssh密钥登陆/index.html">
+<meta property="og:site_name" content="You define me">
+<meta property="og:description" content="ssh密钥登陆相较于传统的用户名和密码认证方式，SSH 密钥对有以下特点：    仅适用于 Linux 实例。     SSH 密钥对登录认证更为安全可靠。     便于远程登录大量 Linux 实例，方便管理。      什么是 SSH 密钥对SSH 密钥对是通过一种加密算法生成的一对密钥：一个对外界公开，称为“公钥”；另一个您自己保留，称为“私钥”。 如果您已经将公钥配置在 Linux 实例中">
+<meta property="og:image" content="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/51793/cn_zh/1492585020485/ecs%20_%20sshkeypair%20_%20create.png">
+<meta property="og:image" content="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/51793/cn_zh/1492585093376/ecs%20_%20sshkeypair%20_%20create%20_%20new.png">
+<meta property="og:image" content="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/51793/cn_zh/1492585253124/ecs%20_%20sshkeypair%20_%20create%20_%20new%20_%20privatekey.png">
+<meta property="og:updated_time" content="2017-08-22T01:51:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="阿里云服务器使用ssh密钥登陆">
+<meta name="twitter:description" content="ssh密钥登陆相较于传统的用户名和密码认证方式，SSH 密钥对有以下特点：    仅适用于 Linux 实例。     SSH 密钥对登录认证更为安全可靠。     便于远程登录大量 Linux 实例，方便管理。      什么是 SSH 密钥对SSH 密钥对是通过一种加密算法生成的一对密钥：一个对外界公开，称为“公钥”；另一个您自己保留，称为“私钥”。 如果您已经将公钥配置在 Linux 实例中">
+<meta name="twitter:image" content="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/51793/cn_zh/1492585020485/ecs%20_%20sshkeypair%20_%20create.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://17wpw.com/2017/06/26/阿里云服务器使用ssh密钥登陆/"/>
+
+
+
+
+
+  <title>阿里云服务器使用ssh密钥登陆 | You define me</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?92096bcd95c9aa461a04e26f626852fd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">You define me</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/06/26/阿里云服务器使用ssh密钥登陆/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jax">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/class.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="You define me">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">阿里云服务器使用ssh密钥登陆</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-26T14:02:37+08:00">
+                2017-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/26/阿里云服务器使用ssh密钥登陆/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/06/26/阿里云服务器使用ssh密钥登陆/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>ssh密钥登陆相较于传统的用户名和密码认证方式，SSH 密钥对有以下特点：  </p>
+<ol>
+<li>仅适用于 Linux 实例。    </li>
+<li>SSH 密钥对登录认证更为安全可靠。    </li>
+<li>便于远程登录大量 Linux 实例，方便管理。    </li>
+</ol>
+<h2 id="什么是-SSH-密钥对"><a href="#什么是-SSH-密钥对" class="headerlink" title="什么是 SSH 密钥对"></a>什么是 SSH 密钥对</h2><p>SSH 密钥对是通过一种加密算法生成的一对密钥：一个对外界公开，称为“公钥”；另一个您自己保留，称为“私钥”。</p>
+<p>如果您已经将公钥配置在 Linux 实例中，那么，在本地或者另外一个实例中，您可以使用私钥通过 SSH 命令或相关工具登录实例，而不需要输入密码。</p>
+<h2 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h2><p>使用 SSH 密钥对有以下优势:</p>
+<ul>
+<li>安全性高：<ul>
+<li>密钥对安全强度远高于常规用户口令，可以杜绝暴力破解威胁。</li>
+<li>不可能通过公钥推导出私钥。</li>
+<li>易用快捷：只需在控制台和本地客户端做简单配置即可远程登录实例，再次登录时无需再输入密码。如果您需要批量维护多个 ECS 实例，推荐使用这种方式登录。</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<h2 id="阿里云生成密钥"><a href="#阿里云生成密钥" class="headerlink" title="阿里云生成密钥"></a>阿里云生成密钥</h2><p>按以下步骤创建密钥对。</p>
+<ol>
+<li><p>登录 阿里云 ECS 控制台。</p>
+</li>
+<li><p>在导航窗格中，单击 密钥对管理。</p>
+</li>
+<li><p>在 密钥对管理 页面上，选择所需地域后，单击 创建密钥对。<br> <img src="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/51793/cn_zh/1492585020485/ecs%20_%20sshkeypair%20_%20create.png"></p>
+</li>
+<li><p>在弹出窗口，设置密钥对名称，并选择 自动新建密钥对。指定的密钥对名称不应该与已有的密钥对名称重复，也不应该与删除前仍绑定实例的密钥对名称重复。否则，控制台会报错“密钥对已存在”。<br><img src="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/51793/cn_zh/1492585093376/ecs%20_%20sshkeypair%20_%20create%20_%20new.png"></p>
+</li>
+<li><p>单击 确定，开始创建密钥对。</p>
+</li>
+<li><p>下载私钥。页面上会弹出类似于下方截图的下载提示窗口，请按窗口提示下载私钥。<br>注意：您必须立即下载私钥。当该密钥对绑定某个 ECS 实例时，如果没有私钥，您将再也不能登录该 ECS 实例。<br><img src="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/51793/cn_zh/1492585253124/ecs%20_%20sshkeypair%20_%20create%20_%20new%20_%20privatekey.png"></p>
+</li>
+<li><p>密钥对创建成功后，您可以在密钥对列表里看到新创建的密钥对信息，包括 密钥对名称、密钥对指纹 等。</p>
+</li>
+</ol>
+<h2 id="mac使用ssh密钥登陆"><a href="#mac使用ssh密钥登陆" class="headerlink" title="mac使用ssh密钥登陆"></a>mac使用ssh密钥登陆</h2><blockquote>
+<p>命令登陆：ssh -i &lt;私钥名称&gt; root@&lt;服务器&gt;</p>
+</blockquote>
+<p>可能会出现登陆报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</div><div class="line">@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @</div><div class="line">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</div><div class="line">Permissions 0644 for &apos;sshkey_rblcmall.pem&apos; are too open.</div><div class="line">It is required that your private key files are NOT accessible by others.</div><div class="line">This private key will be ignored.</div><div class="line">Load key &quot;sshkey_rblcmall.pem&quot;: bad permissions</div><div class="line">Permission denied (publickey,gssapi-keyex,gssapi-with-mic).</div></pre></td></tr></table></figure></p>
+<ul>
+<li>原因：权限过大。</li>
+<li>解决方案，降低权限,命令：    chmod 0600 &lt;私钥名称&gt;</li>
+</ul>
+<blockquote>
+<p>因为服务器FTP之前是使用root账号登陆的。所以导致无法登陆</p>
+<ul>
+<li>安装vsftpd ftp服务器。</li>
+<li>yum install vsftpd</li>
+<li>新增FTP用户</li>
+<li>user add ftp</li>
+<li>更改FTP用户密码。passwd ftp<br>编辑配置文件vsftpd.conf<br>[root@localhost mnt]# cd /etc/vsftpd/<br>[root@localhost vsftpd]# cp vsftpd.conf vsftpd.conf.bak<br>[root@localhost vsftpd]# vim  vsftpd.conf<br>做如下配置：<br>“#anonymous_enable=YES” 改成 “anonymous_enable=NO”</li>
+<li>给FTP用户赋目录权限<br>mkdir  /home/ftp/upload<br>chown ftp:root  /home/ftp/upload    </li>
+<li>mac 连接vsftpd提示：服务器发回了不可路由的地址。使用服务器地址代替。<br>换回默认的21端口，问题解决。</li>
+</ul>
+</blockquote>
+<h2 id="ECS无法端口无法访问"><a href="#ECS无法端口无法访问" class="headerlink" title="ECS无法端口无法访问"></a>ECS无法端口无法访问</h2><blockquote>
+<ul>
+<li><p>telnet验证端口  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt; telnet xxx.xxx.xxx.xx 端口号</div><div class="line">&gt; ```  </div><div class="line"></div><div class="line">&gt; + 首先查看ECS安全组规则是否允许端口</div><div class="line">&gt; + 查看系统防火墙配置。  </div><div class="line">```html</div><div class="line"> servcie iptables stop           --临时关闭防火墙    </div><div class="line"> chkconfig iptables off          --永久关闭防火墙</div></pre></td></tr></table></figure>
+</li>
+<li><p>CentOS 7.2关闭防火墙<br>CentOS 7.0默认使用的是firewall作为防火墙，这里改为iptables防火墙步骤。</p>
+</li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/阿里云-centos-linux/" rel="tag"># 阿里云,centos,linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/11/IDEAgit返回到某个提交版本/" rel="next" title="IDEA git返回到某个提交版本">
+                <i class="fa fa-chevron-left"></i> IDEA git返回到某个提交版本
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/06/如何找出nginx配置文件的所在位置/" rel="prev" title="如何找出nginx配置文件的所在位置">
+                如何找出nginx配置文件的所在位置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/class.jpg"
+                alt="Jax" />
+            
+              <p class="site-author-name" itemprop="name">Jax</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/txlaijava" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:5681540@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是-SSH-密钥对"><span class="nav-number">1.</span> <span class="nav-text">什么是 SSH 密钥对</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优势"><span class="nav-number">2.</span> <span class="nav-text">优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#阿里云生成密钥"><span class="nav-number">3.</span> <span class="nav-text">阿里云生成密钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mac使用ssh密钥登陆"><span class="nav-number">4.</span> <span class="nav-text">mac使用ssh密钥登陆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ECS无法端口无法访问"><span class="nav-number">5.</span> <span class="nav-text">ECS无法端口无法访问</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2014 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jax</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: '1498456957000', 
+            owner: 'txlaijava',
+            repo: 'blog',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '1d131739f0c95ad8b2c775a35f0417a65362813e',
+            
+                client_id: 'b8c057d5498a9da21769'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
