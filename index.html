@@ -1,32 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 
 
 
   
 
 
-
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
 
 
 
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
 
 
 
@@ -46,34 +34,50 @@
 
 
 
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
 
 
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+  <meta name="keywords" content="Jax's blog" />
 
 
 
 
 
-  <meta name="keywords" content="Jax's Blog" />
 
 
 
-
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -93,14 +97,12 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
     fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: true,
     duoshuo: {
-      userId: '0',
+      userId: 'undefined',
       author: '博主'
     },
     algolia: {
@@ -121,10 +123,12 @@
 
 
 
-  <title>You define me</title>
+  <title> You define me </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
-
-
 
 
 
@@ -141,43 +145,40 @@
 
 
 
-</head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+
 
   
   
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
+      <div class="header-inner"><div class="site-meta ">
+  
 
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">You define me</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <h1 class="site-subtitle" itemprop="description"></h1>
-      
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">You define me</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
   </div>
+  <p class="site-subtitle"></p>
+</div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
 </div>
 
 <nav class="site-nav">
@@ -190,35 +191,15 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-首页"></i> <br />
             
             首页
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -254,31 +235,38 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2018/08/20/xxl-job/">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/06/06/解决百度ueditor图片上传问题/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jax">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/class.jpg">
-    </span>
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Jax">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/class.jpg">
+  </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="You define me">
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="You define me">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="You define me" src="">
     </span>
+  </span>
 
     
       <header class="post-header">
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2018/08/20/xxl-job/" itemprop="url">xxl-job使用</a></h2>
+                <a class="post-title-link" href="/2017/06/06/解决百度ueditor图片上传问题/" itemprop="url">
+                  解决百度ueditor图片上传问题
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -287,11 +275,9 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-20T17:01:00+08:00">
-                2018-08-20
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-06T20:07:50+08:00">
+                2017-06-06
               </time>
             
 
@@ -307,8 +293,8 @@
           
 
           
-          
 
+          
           
 
           
@@ -319,9 +305,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -330,33 +314,22 @@
       
         
           
-            <h2 id="项目接入"><a href="#项目接入" class="headerlink" title="项目接入"></a>项目接入</h2><p><a href="http://www.xuxueli.com/xxl-job/#/?id=%E3%80%8A%E5%88%86%E5%B8%83%E5%BC%8F%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%B9%B3%E5%8F%B0xxl-job%E3%80%8B" target="_blank">接入文档</a></p>
-<h2 id="填坑1-执行器外网ip地址绑定"><a href="#填坑1-执行器外网ip地址绑定" class="headerlink" title="填坑1 执行器外网ip地址绑定"></a>填坑1 执行器外网ip地址绑定</h2><ul>
-<li>如果使用公网的IP填写到执行器的IP中，则会报错提示：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">java.net.BindException: Cannot assign requested address</div><div class="line">        at sun.nio.ch.Net.bind0(Native Method)</div><div class="line">        at sun.nio.ch.Net.bind(Net.java:<span class="number">433</span>)</div><div class="line">        at sun.nio.ch.Net.bind(Net.java:<span class="number">425</span>)</div><div class="line">        at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:<span class="number">223</span>)</div><div class="line">        at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:<span class="number">74</span>)</div><div class="line">        at org.eclipse.jetty.server.ServerConnector.open(ServerConnector.java:<span class="number">298</span>)</div><div class="line">        at org.eclipse.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:<span class="number">80</span>)</div><div class="line">        at org.eclipse.jetty.server.ServerConnector.doStart(ServerConnector.java:<span class="number">236</span>)</div><div class="line">        at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:<span class="number">68</span>)</div><div class="line">        at org.eclipse.jetty.server.Server.doStart(Server.java:<span class="number">431</span>)</div><div class="line">        at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:<span class="number">68</span>)</div><div class="line">        at com.xxl.job.core.rpc.netcom.jetty.server.JettyServer$<span class="number">1</span>.run(JettyServer.java:<span class="number">46</span>)</div><div class="line">        at java.lang.Thread.run(Thread.java:<span class="number">745</span>)</div></pre></td></tr></table></figure>
-<ul>
-<li>原因是：在云服务器中，一般只有一个内网网卡，外网IP地址不是直接配置在服务器中，而是配置在服务器外层的网关上，做了一层映射转发。所以jetty服务是无法绑定公网IP地址的。</li>
-<li>解决方法：ip填写0.0.0.0或者不填。然后在后台执行器管理中，手动修改online机器地址，把ip改成执行器的外网IP。</li>
-</ul>
-
+            
           
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
-      
-
       
 
       
@@ -366,10 +339,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -382,31 +351,38 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2018/06/23/苹果开发者账号问题-1/">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/05/15/height高度问题/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jax">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/class.jpg">
-    </span>
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Jax">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/class.jpg">
+  </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="You define me">
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="You define me">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="You define me" src="">
     </span>
+  </span>
 
     
       <header class="post-header">
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2018/06/23/苹果开发者账号问题-1/" itemprop="url">苹果开发者账号问题</a></h2>
+                <a class="post-title-link" href="/2017/05/15/height高度问题/" itemprop="url">
+                  $(window).height()高度获取误差
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -415,11 +391,9 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-23T17:06:25+08:00">
-                2018-06-23
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-15T23:04:56+08:00">
+                2017-05-15
               </time>
             
 
@@ -435,8 +409,8 @@
           
 
           
-          
 
+          
           
 
           
@@ -447,9 +421,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -458,27 +430,29 @@
       
         
           
-            <h3 id="苹果开发者账号更新协议，需要新增手机号码。"><a href="#苹果开发者账号更新协议，需要新增手机号码。" class="headerlink" title="苹果开发者账号更新协议，需要新增手机号码。"></a>苹果开发者账号更新协议，需要新增手机号码。</h3><p>The Apple Developer Program License Agreement has been updated.</p>
-<p>In order to access certain membership resources, you must accept the latest license agreement. First, you’ll need to update the mobile phone number associated with your Apple ID. Your mobile phone number must be based in your country/region. Edit this number in the Account section of appleid.apple.com, and return to your developer account to continue.</p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>可以点击按钮进入appid.apple.com官网进行更改手机号码信息，但是需要回答安全问题，如忘记安全问题最便捷的办法是：<br>找一台iphone设备，点击设置，icloud账户，登出，再登入您的开发者账号，点击“姓名、电子邮箱、电话号码“，新增一个手机号码。完成之后再登入开发者平台，则可以看到同意协议选项。</p>
+            <p>在前端通过$(window).height()获取窗口高度总会有100px的误差。搜索得知问题：</p>
+<blockquote>
+<ol>
+<li>html顶部<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;html&gt;应该改成&lt;!DOCTYPE html&gt;  </div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
 
           
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
-      
-
       
 
       
@@ -488,10 +462,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -504,31 +474,38 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2018/06/23/CentOS服务器验证码乱码解决/">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/05/08/centos nginx启动/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jax">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/class.jpg">
-    </span>
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Jax">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/class.jpg">
+  </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="You define me">
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="You define me">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="You define me" src="">
     </span>
+  </span>
 
     
       <header class="post-header">
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2018/06/23/CentOS服务器验证码乱码解决/" itemprop="url">CentOS服务器验证码乱码解决</a></h2>
+                <a class="post-title-link" href="/2017/05/08/centos nginx启动/" itemprop="url">
+                  centos Nginx和PHP-FPM的启动、重启、停止脚本
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -537,11 +514,9 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-23T17:01:00+08:00">
-                2018-06-23
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-08T21:42:57+08:00">
+                2017-05-08
               </time>
             
 
@@ -557,8 +532,8 @@
           
 
           
-          
 
+          
           
 
           
@@ -569,9 +544,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -580,58 +553,29 @@
       
         
           
-            <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>线上环境验证码乱码乱码，本地环境正常，判断应该是由于线上linux系统缺少字体文件造成的。验证码使用的：Times New Roman 字体。那么到本地字体文件夹找到对应的字体文件，上传到服务器中。</p>
-<h3 id="Linux-CentOS-7-安装字体库"><a href="#Linux-CentOS-7-安装字体库" class="headerlink" title="Linux CentOS 7 安装字体库"></a>Linux CentOS 7 安装字体库</h3><p>在CentOS 4.x开始用fontconfig来安装字体库，所以输入以下命令即可：</p>
-<blockquote>
-<p>yum -y install fontconfig</p>
-</blockquote>
-<p>当看到下图的提示信息时说明已安装成功：<br><img src="https://img-blog.csdn.net/20160525145746674"></p>
-<p>这时在/usr/shared目录就可以看到fonts和fontconfig目录了（之前是没有的）：<br><img src="https://img-blog.csdn.net/20160525145907583"></p>
-<h3 id="添加中文字体"><a href="#添加中文字体" class="headerlink" title="添加中文字体"></a>添加中文字体</h3><p>首先在/usr/shared/fonts目录下新建一个目录chinese：<br><img src="https://img-blog.csdn.net/20160525151335431"></p>
-<p>然后就是将上面的两个字体上传至/usr/shared/fonts/chinese目录下即可： </p>
-<p>紧接着需要修改chinese目录的权限：</p>
-<blockquote>
-<p>chmod -R 755 /usr/share/fonts/chinese</p>
-</blockquote>
-<p>接下来需要安装ttmkfdir来搜索目录中所有的字体信息，并汇总生成fonts.scale文件，输入命令：</p>
-<blockquote>
-<p>yum -y install ttmkfdir</p>
-</blockquote>
-<p>然后执行ttmkfdir命令即可：</p>
-<blockquote>
-<p>ttmkfdir -e /usr/share/X11/fonts/encodings/encodings.dir</p>
-</blockquote>
-<p>最后一步就是修改字体配置文件了，首先通过编辑器打开配置文件：</p>
-<blockquote>
-<p>vi /etc/fonts/fonts.conf</p>
-</blockquote>
-<p>可以看到一个Font list，即字体列表，在这里需要把我们添加的中文字体位置加进去： </p>
-<p><img src="https://img-blog.csdn.net/20160525162529288"></p>
-<p>然后输入:wq保存退出，最后别忘了刷新内存中的字体缓存，这样就不用reboot重启了：</p>
-<blockquote>
-<p>fc-cache</p>
-</blockquote>
-<p>这样所有的步骤就算完成了，最后再次通过fc-list看一下字体列表： </p>
-<p><img src="https://img-blog.csdn.net/20160525164056044"></p>
-<p>可以看到已经成功安装上了中文字体，至此安装过程就全部结束，再次查看可以发现中文样式和内容均已可以正常显示了。</p>
+            <h3 id="Nginx启动脚本-etc-init-d-nginx"><a href="#Nginx启动脚本-etc-init-d-nginx" class="headerlink" title="Nginx启动脚本/etc/init.d/nginx"></a>Nginx启动脚本/etc/init.d/nginx</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">#</div><div class="line"># Startup script for Nginx - this script starts and stops the nginx daemon</div><div class="line">#</div><div class="line"># chkconfig:   - 85 15</div><div class="line"># description:  Nginx is an HTTP(S) server, HTTP(S) reverse proxy and IMAP/POP3 proxy server</div><div class="line"># processname: nginx</div><div class="line"># config:      /usr/local/nginx/conf/nginx.conf</div><div class="line"># pidfile:     /usr/local/nginx/logs/nginx.pid</div><div class="line"> </div><div class="line"># Source function library.</div><div class="line">. /etc/rc.d/init.d/functions</div><div class="line"> </div><div class="line"># Source networking configuration.</div><div class="line">. /etc/sysconfig/network</div><div class="line"> </div><div class="line"># Check that networking is up.</div><div class="line">[ &quot;$NETWORKING&quot; = &quot;no&quot; ] &amp;&amp; exit 0</div><div class="line"> </div><div class="line">nginx=&quot;/usr/local/nginx/sbin/nginx&quot;</div><div class="line">prog=$(basename $nginx)</div><div class="line"> </div><div class="line">NGINX_CONF_FILE=&quot;/usr/local/nginx/conf/nginx.conf&quot;</div><div class="line"> </div><div class="line">[ -f /etc/sysconfig/nginx ] &amp;&amp; . /etc/sysconfig/nginx</div><div class="line"> </div><div class="line">lockfile=/var/lock/subsys/nginx</div><div class="line"> </div><div class="line">start() &#123;</div><div class="line">    [ -x $nginx ] || exit 5</div><div class="line">    [ -f $NGINX_CONF_FILE ] || exit 6</div><div class="line">    echo -n $&quot;Starting $prog: &quot;</div><div class="line">    daemon $nginx -c $NGINX_CONF_FILE</div><div class="line">    retval=$?</div><div class="line">    echo</div><div class="line">    [ $retval -eq 0 ] &amp;&amp; touch $lockfile</div><div class="line">    return $retval</div><div class="line">&#125;</div><div class="line"> </div><div class="line">stop() &#123;</div><div class="line">    echo -n $&quot;Stopping $prog: &quot;</div><div class="line">    killproc $prog -QUIT</div><div class="line">    retval=$?</div><div class="line">    echo</div><div class="line">    [ $retval -eq 0 ] &amp;&amp; rm -f $lockfile</div><div class="line">    return $retval</div><div class="line">&#125;</div><div class="line"> </div><div class="line">restart() &#123;</div><div class="line">    configtest || return $?</div><div class="line">    stop</div><div class="line">    sleep 1</div><div class="line">    start</div><div class="line">&#125;</div><div class="line"> </div><div class="line">reload() &#123;</div><div class="line">    configtest || return $?</div><div class="line">    echo -n $&quot;Reloading $prog: &quot;</div><div class="line">    killproc $nginx -HUP</div><div class="line">    RETVAL=$?</div><div class="line">    echo</div><div class="line">&#125;</div><div class="line"> </div><div class="line">force_reload() &#123;</div><div class="line">    restart</div><div class="line">&#125;</div><div class="line"> </div><div class="line">configtest() &#123;</div><div class="line">  $nginx -t -c $NGINX_CONF_FILE</div><div class="line">&#125;</div><div class="line"> </div><div class="line">rh_status() &#123;</div><div class="line">    status $prog</div><div class="line">&#125;</div><div class="line"> </div><div class="line">rh_status_q() &#123;</div><div class="line">    rh_status &gt;/dev/null 2&gt;&amp;1</div><div class="line">&#125;</div><div class="line"> </div><div class="line">case &quot;$1&quot; in</div><div class="line">    start)</div><div class="line">        rh_status_q &amp;&amp; exit 0</div><div class="line">        $1</div><div class="line">        ;;</div><div class="line">    stop)</div><div class="line">        rh_status_q || exit 0</div><div class="line">        $1</div><div class="line">        ;;</div><div class="line">    restart|configtest)</div><div class="line">        $1</div><div class="line">        ;;</div><div class="line">    reload)</div><div class="line">        rh_status_q || exit 7</div><div class="line">        $1</div><div class="line">        ;;</div><div class="line">    force-reload)</div><div class="line">        force_reload</div><div class="line">        ;;</div><div class="line">    status)</div><div class="line">        rh_status</div><div class="line">        ;;</div><div class="line">    condrestart|try-restart)</div><div class="line">        rh_status_q || exit 0</div><div class="line">            ;;</div><div class="line">    *)</div><div class="line">        echo $&quot;Usage: $0 &#123;start|stop|status|restart|condrestart|try-restart|reload|force-reload|configtest&#125;&quot;</div><div class="line">        exit 2</div><div class="line">esac</div></pre></td></tr></table></figure>
+<p>编辑好后保存，执行以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sudo chmod +x /etc/init.d/nginx</div><div class="line">sudo /sbin/chkconfig nginx on</div><div class="line"># 检查一下</div><div class="line">sudo /sbin/chkconfig --list nginx</div><div class="line">nginx           0:off   1:off   2:on    3:on    4:on    5:on    6:off</div></pre></td></tr></table></figure></p>
+<p>完成！可以使用以下命令管理Nginx了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">service nginx start</div><div class="line">service nginx stop</div><div class="line">service nginx restart</div><div class="line">service nginx reload</div><div class="line"> </div><div class="line">/etc/init.d/nginx start</div><div class="line">/etc/init.d/nginx stop</div><div class="line">/etc/init.d/nginx restart</div><div class="line">/etc/init.d/nginx reload</div></pre></td></tr></table></figure></p>
+<h3 id="PHP-FPM启动脚本-etc-init-d-php-fpm"><a href="#PHP-FPM启动脚本-etc-init-d-php-fpm" class="headerlink" title="PHP-FPM启动脚本/etc/init.d/php-fpm"></a>PHP-FPM启动脚本/etc/init.d/php-fpm</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">#</div><div class="line"># Startup script for the PHP-FPM server.</div><div class="line">#</div><div class="line"># chkconfig: 345 85 15</div><div class="line"># description: PHP is an HTML-embedded scripting language</div><div class="line"># processname: php-fpm</div><div class="line"># config: /usr/local/php/etc/php.ini</div><div class="line"> </div><div class="line"># Source function library.</div><div class="line">. /etc/rc.d/init.d/functions</div><div class="line"> </div><div class="line">PHP_PATH=/usr/local</div><div class="line">DESC=&quot;php-fpm daemon&quot;</div><div class="line">NAME=php-fpm</div><div class="line"># php-fpm路径</div><div class="line">DAEMON=$PHP_PATH/php/sbin/$NAME</div><div class="line"># 配置文件路径</div><div class="line">CONFIGFILE=$PHP_PATH/php/etc/php-fpm.conf</div><div class="line"># PID文件路径(在php-fpm.conf设置)</div><div class="line">PIDFILE=$PHP_PATH/php/var/run/$NAME.pid</div><div class="line">SCRIPTNAME=/etc/init.d/$NAME</div><div class="line"> </div><div class="line"># Gracefully exit if the package has been removed.</div><div class="line">test -x $DAEMON || exit 0</div><div class="line"> </div><div class="line">rh_start() &#123;</div><div class="line">  $DAEMON -y $CONFIGFILE || echo -n &quot; already running&quot;</div><div class="line">&#125;</div><div class="line"> </div><div class="line">rh_stop() &#123;</div><div class="line">  kill -QUIT `cat $PIDFILE` || echo -n &quot; not running&quot;</div><div class="line">&#125;</div><div class="line"> </div><div class="line">rh_reload() &#123;</div><div class="line">  kill -HUP `cat $PIDFILE` || echo -n &quot; can&apos;t reload&quot;</div><div class="line">&#125;</div><div class="line"> </div><div class="line">case &quot;$1&quot; in</div><div class="line">  start)</div><div class="line">        echo -n &quot;Starting $DESC: $NAME&quot;</div><div class="line">        rh_start</div><div class="line">        echo &quot;.&quot;</div><div class="line">        ;;</div><div class="line">  stop)</div><div class="line">        echo -n &quot;Stopping $DESC: $NAME&quot;</div><div class="line">        rh_stop</div><div class="line">        echo &quot;.&quot;</div><div class="line">        ;;</div><div class="line">  reload)</div><div class="line">        echo -n &quot;Reloading $DESC configuration...&quot;</div><div class="line">        rh_reload</div><div class="line">        echo &quot;reloaded.&quot;</div><div class="line">  ;;</div><div class="line">  restart)</div><div class="line">        echo -n &quot;Restarting $DESC: $NAME&quot;</div><div class="line">        rh_stop</div><div class="line">        sleep 1</div><div class="line">        rh_start</div><div class="line">        echo &quot;.&quot;</div><div class="line">        ;;</div><div class="line">  *)</div><div class="line">         echo &quot;Usage: $SCRIPTNAME &#123;start|stop|restart|reload&#125;&quot; &gt;&amp;2</div><div class="line">         exit 3</div><div class="line">        ;;</div><div class="line">esac</div><div class="line">exit 0</div></pre></td></tr></table></figure>
+<p>编辑好后保存，执行以下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sudo chmod +x /etc/init.d/php-fpm</div><div class="line">sudo /sbin/chkconfig php-fpm on</div><div class="line"># 检查一下</div><div class="line">sudo /sbin/chkconfig --list php-fpm</div><div class="line">php-fpm           0:off   1:off   2:on    3:on    4:on    5:on    6:off</div></pre></td></tr></table></figure>
+<p>完成！可以使用以下命令管理php-fpm了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">service php-fpm start</div><div class="line">service php-fpm stop</div><div class="line">service php-fpm restart</div><div class="line">service php-fpm reload</div><div class="line"> </div><div class="line">/etc/init.d/php-fpm start</div><div class="line">/etc/init.d/php-fpm stop</div><div class="line">/etc/init.d/php-fpm restart</div><div class="line">/etc/init.d/php-fpm reload</div></pre></td></tr></table></figure></p>
 
           
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
-      
-
       
 
       
@@ -641,10 +585,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -657,31 +597,38 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/12/22/微信登陆本地调试/">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/05/07/IDEACPU/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jax">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/class.jpg">
-    </span>
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Jax">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/class.jpg">
+  </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="You define me">
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="You define me">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="You define me" src="">
     </span>
+  </span>
 
     
       <header class="post-header">
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2017/12/22/微信登陆本地调试/" itemprop="url">微信登陆本地调试</a></h2>
+                <a class="post-title-link" href="/2017/05/07/IDEACPU/" itemprop="url">
+                  IDEACPU
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -690,11 +637,9 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-22T16:16:09+08:00">
-                2017-12-22
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-07T21:42:57+08:00">
+                2017-05-07
               </time>
             
 
@@ -710,8 +655,8 @@
           
 
           
-          
 
+          
           
 
           
@@ -722,9 +667,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -732,16 +675,260 @@
 
       
         
-          <h3 id="开通微信沙盒账号"><a href="#开通微信沙盒账号" class="headerlink" title="开通微信沙盒账号"></a>开通微信沙盒账号</h3><ul>
-<li>开通链接：<a href="https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login" target="_blank" rel="external">https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login</a>  </li>
-<li>扫码登陆之后可获得微信测试接口的appid、appsecret（上线之后替换成正式的即可）。沙盒环境拥有所有微信公众号的接口权限。  </li>
-</ul>
-<h3 id="配置微信登陆授权域名"><a href="#配置微信登陆授权域名" class="headerlink" title="配置微信登陆授权域名"></a>配置微信登陆授权域名</h3><ul>
-<li>在接口权限表中找到 网页服务-网页帐号-修改。点击修改填写本地环境ip地址（或者本地外网映射域名，推荐使用内外网穿透工具 <a href="https://natapp.cn/#download）；" target="_blank" rel="external">https://natapp.cn/#download）；</a><br><img src="/images/WechatIMG62.jpg" alt=""></li>
-</ul>
+          
+            <p><a href="http://stackoverflow.com/questions/21595289/intellij-idea-13-ce-consuming-lots-of-cpu" target="_blank" rel="external">http://stackoverflow.com/questions/21595289/intellij-idea-13-ce-consuming-lots-of-cpu</a></p>
+<p>C:\Program Files (x86)\JetBrains\IntelliJ IDEA 14.1.3\bin<br>idea.exe.vmoptions<br>idea64.exe.vmoptions</p>
+<p>Mac user<br><a href="http://stackoverflow.com/questions/20545435/why-is-the-new-version-of-intellij-idea-so-slow?rq=1" target="_blank" rel="external">http://stackoverflow.com/questions/20545435/why-is-the-new-version-of-intellij-idea-so-slow?rq=1</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/04/26/mac系统下安装Composer/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Jax">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/class.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="You define me">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="You define me" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/26/mac系统下安装Composer/" itemprop="url">
+                  mac系统下安装Composer
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-26T15:45:54+08:00">
+                2017-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>mac下直接用命令行模式下载Composer<br>使用 curl 指令下载：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -sS https://getcomposer.org/installer | php</div></pre></td></tr></table></figure></p>
+<p>或是沒有安裝 curl ，也可以用 php 指令下载：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php -r &quot;readfile(&apos;https://getcomposer.org/installer&apos;);&quot; | php</div></pre></td></tr></table></figure></p>
+<p>手动下载Composer<br>地址：<a href="https://getcomposer.org/composer.phar" target="_blank" rel="external">https://getcomposer.org/composer.phar</a></p>
+<p>当你下载了 composer.phar 后，可以将它放在目录中，但每次当你建立新目录时，你必須再复制一个副本到新目录中，这样比较麻烦。所以最佳做法是将它放到 usr/local/bin 目录中中，成为全域指令。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv composer.phar /usr/local/bin/composer</div></pre></td></tr></table></figure></p>
+<p>这样就可以直接在终端使用composer命令了。。。。</p>
+<p>如果碰到提示没有权限</p>
+<blockquote>
+<p>Permission denied</p>
+</blockquote>
+<p>执行：</p>
+<blockquote>
+<p>chmod +x /usr/local/bin/composer  </p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/04/06/为阿里云ECS（CentOS6）配置IPv6隧道地址/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Jax">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/class.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="You define me">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="You define me" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/06/为阿里云ECS（CentOS6）配置IPv6隧道地址/" itemprop="url">
+                  为阿里云ECS（CentOS6）配置IPv6隧道地址
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-06T22:24:51+08:00">
+                2017-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>折腾了N天的IPV6，总算是抽出一晚上的时间来彻底解决了。整理了网上找的一些解决方案。<br>我们先来看下苹果官方对于IPV6的要求及如何测试(<a href="https://developer.apple.com/library/content/documentation/NetworkingInternetWeb/Conceptual/NetworkingOverview/UnderstandingandPreparingfortheIPv6Transition/UnderstandingandPreparingfortheIPv6Transition.html#//apple_ref/doc/uid/TP40010220-CH213-SW1">苹果官方说明:开发注意事项和如何测试IPV6 Only的支持</a>)</p>
+<hr>
+<h2 id="注册IPV6隧道服务"><a href="#注册IPV6隧道服务" class="headerlink" title="注册IPV6隧道服务"></a>注册IPV6隧道服务</h2><p>1、打开<a href="https://www.tunnelbroker.net">https://www.tunnelbroker.net</a>注册一个账号<br>2、登录到 tunnelbroker.net 后，请点击左侧导航的 Create Regular Tunnel ，输入您的IPv4地址，选择 HongKong 隧道服务器，来创建一个新的ipv6隧道配置<br><img src="http://bbs.aliyun.com/attachment/Fid_239/239_1477160476054779_76f80727fda488f.png?60"><br>3、此例，创建好的ipv6隧道地址为：2001:470:18:401::2<br><img src="http://bbs.aliyun.com/attachment/Fid_239/239_1477160476054779_ea6b3a452a40d46.png?70"><br>4、然后，请点击 Example Configureations ，里边会给出在不同系统里可执行的命令，目的是创建ipv6隧道<br>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/22/微信登陆本地调试/#more" rel="contents">
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/04/06/为阿里云ECS（CentOS6）配置IPv6隧道地址/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -749,19 +936,17 @@
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
-      
-
       
 
       
@@ -771,10 +956,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -787,31 +968,38 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/12/20/spring boot服务器部署 + nginx + https/">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/03/23/服务器碰到的问题/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jax">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/class.jpg">
-    </span>
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Jax">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/class.jpg">
+  </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="You define me">
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="You define me">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="You define me" src="">
     </span>
+  </span>
 
     
       <header class="post-header">
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2017/12/20/spring boot服务器部署 + nginx + https/" itemprop="url">spring boot服务器部署 + nginx + https</a></h2>
+                <a class="post-title-link" href="/2017/03/23/服务器碰到的问题/" itemprop="url">
+                  服务器碰到的问题
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -820,11 +1008,9 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-20T14:14:41+08:00">
-                2017-12-20
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-23T18:25:02+08:00">
+                2017-03-23
               </time>
             
 
@@ -840,8 +1026,8 @@
           
 
           
-          
 
+          
           
 
           
@@ -852,9 +1038,142 @@
       </header>
     
 
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Tomcat-8-访问软连接目录下的文件"><a href="#Tomcat-8-访问软连接目录下的文件" class="headerlink" title="Tomcat 8 访问软连接目录下的文件"></a>Tomcat 8 访问软连接目录下的文件</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- Tomcat 7: --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">Context</span> <span class="attr">allowLinking</span>=<span class="string">"true"</span> /&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- Tomcat 8: --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">Context</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">Resources</span> <span class="attr">allowLinking</span>=<span class="string">"true"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>如何设置软连接 <br><br>  例如给一个目录创建软连接 </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ln -s /data/resource /data/aaa/resource</div><div class="line"></div><div class="line">ln -s /data/rednet/upload /www/rednet/admin/upload</div><div class="line">```  </div><div class="line">删除软连接命令：</div></pre></td></tr></table></figure>
+<p>  rm -rf /data/resource</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">最后千万不要带反斜杠，否则会把resource目录下的所有文件删除的。  </div><div class="line">``` </div><div class="line">rm -rf /data/resource/ （不可以这样写）</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="tomcat-内存设置"><a href="#tomcat-内存设置" class="headerlink" title="tomcat 内存设置"></a>tomcat 内存设置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">JAVA_OPTS=&quot;-Xms1024m -Xmx4096m -Xss1024K -XX:PermSize=512m -XX:MaxPermSize=2048m -Djava.security.egd=file:/dev/./urandom&quot;</div></pre></td></tr></table></figure>
+<ul>
+<li>tomcat启动优化<blockquote>
+<p>-Djava.security.egd=file:/dev/./urandom</p>
+</blockquote>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/03/23/服务器碰到的问题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/03/11/appleid账户恢复/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Jax">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/class.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="You define me">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="You define me" src="">
+    </span>
+  </span>
+
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/11/appleid账户恢复/" itemprop="url">
+                  appleid在账户恢复状态 如何修改密码
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-11T22:06:31+08:00">
+                2017-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
+
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -863,172 +1182,166 @@
       
         
           
-            <h2 id="阿里云申请CA证书"><a href="#阿里云申请CA证书" class="headerlink" title="阿里云申请CA证书"></a>阿里云申请CA证书</h2><h3 id="参考文案"><a href="#参考文案" class="headerlink" title="参考文案"></a>参考文案</h3><ul>
-<li><a href="https://juejin.im/post/5a2fbe1b51882507ae25f991?utm_source=gold_browser_extension" target="_blank" rel="external">理解https</a></li>
+            <p><strong>appleid登陆不知道为什么莫名其妙的提示密码错误，并且我很肯定密码肯定就是这个。然后开始找回密码。。。</strong></p>
+<blockquote>
+<p>问题来了。找回密码选择的恢复账户。然后一直提示等待账户恢复中。致电apple电话客服说，只能等系统恢复账户。没有其他办法。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">今天点到apple美国官网，进到找回密码界面。没想到可以进行选择，谨慎的选择第一个选上。然后成功修改密码。</div><div class="line">链接：https://iforgot.apple.com/password/verify/appleid</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/03/03/linux常用命令/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Jax">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/class.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="You define me">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="You define me" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/03/linux常用命令/" itemprop="url">
+                  linux常用命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-03T15:11:50+08:00">
+                2017-03-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>查看端口占用<blockquote>
+<p><code>netstat -apn | grep 80</code></p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>关闭进程</p>
+<blockquote>
+<p>killall -9 java</p>
+</blockquote>
+</li>
+<li><p>查找文件包含字符串</p>
+<blockquote>
+<p>grep -rn “hello,world!” <em> <br>
+</em>:表示当前目录所有文件，也可以是某个文件名<br><br>-r 是递归查找<br><br>-n 是显示行号<br><br>-R 查找所有文件包含子目录<br><br>-i 忽略大小写<br></p>
+</blockquote>
+</li>
+<li>端口占用情况<blockquote>
+<p>netstat -noa | grep 80  </p>
+</blockquote>
+</li>
+<li>dd</li>
 </ul>
 
           
         
       
     </div>
-    
-    
-    
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/11/29/java.lang.StackOverflowError/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jax">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/class.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="You define me">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/29/java.lang.StackOverflowError/" itemprop="url">Spring Data JPA报错java.lang.StackOverflowError</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-29T15:45:54+08:00">
-                2017-11-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVA/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVA</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>报错信息<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">java.lang.StackOverflowError: <span class="keyword">null</span>,   </div><div class="line">at    com.zangland.study.jpa.entity.BookDetail.hashCode(BookDetail.java:<span class="number">17</span>) ~[classes/:na]</div><div class="line">at com.zangland.study.jpa.entity.Book.hashCode(Book.java:<span class="number">16</span>) ~[classes/:na]</div><div class="line">at com.zangland.study.jpa.entity.BookDetail.hashCode(BookDetail.java:<span class="number">17</span>) ~[classes/:na]</div><div class="line">at com.zangland.study.jpa.entity.Book.hashCode(Book.java:<span class="number">16</span>) ~[classes/:na]</div></pre></td></tr></table></figure></p>
-<p>原因是使用Lombok注解，实体bean会生成全参的toString方法，如果实体bean存在关联关系，便造成死循环。<br></p>
-<p>在实体bean上加上注解<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@ToString(exclude=&#123;&quot;store&quot;&#125;)</div></pre></td></tr></table></figure></p>
-<p>忽略不想在toString方法输出的字段便解决。</p>
-
-          
-        
+    <div>
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
-
-    
 
     <footer class="post-footer">
-      
-
       
 
       
@@ -1038,10 +1351,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1054,31 +1363,38 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/11/25/PHPStormDebug/">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/03/02/302/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jax">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/class.jpg">
-    </span>
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Jax">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/class.jpg">
+  </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="You define me">
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="You define me">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="You define me" src="">
     </span>
+  </span>
 
     
       <header class="post-header">
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 
-                <a class="post-title-link" href="/2017/11/25/PHPStormDebug/" itemprop="url">PhpStormDebug调试</a></h2>
+                <a class="post-title-link" href="/2017/03/02/302/" itemprop="url">
+                  java.lang.NoSuchFieldError:ALIAS_TO_ENTITY_MAP
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
@@ -1087,11 +1403,9 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-25T15:45:54+08:00">
-                2017-11-25
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-02T15:18:05+08:00">
+                2017-03-02
               </time>
             
 
@@ -1107,8 +1421,8 @@
           
 
           
-          
 
+          
           
 
           
@@ -1119,9 +1433,7 @@
       </header>
     
 
-    
-    
-    
+
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1129,28 +1441,29 @@
 
       
         
-          
-            <h2 id="出现问题"><a href="#出现问题" class="headerlink" title="出现问题"></a>出现问题</h2><ul>
-<li>调试总是断点在index.php的第一行 <br><br>点击菜单Run，在弹出菜单中取消勾选“Break at first line in PHP scripts”</li>
-</ul>
-
-          
+          <p>项目部署到服务器报：java.lang.NoSuchFieldError: ALIAS_TO_ENTITY_MAP</p>
+<p>错误分析：<br>运行时的JDK环境低于编译时的JDK环境。<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/03/02/302/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    
-    
-    
 
-    
+    <div>
+      
+    </div>
 
-    
+    <div>
+      
+    </div>
 
-    
 
     <footer class="post-footer">
-      
-
       
 
       
@@ -1160,396 +1473,6 @@
         <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/08/21/org-hibernate-LazyInitializationException异常解决/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jax">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/class.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="You define me">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/21/org-hibernate-LazyInitializationException异常解决/" itemprop="url">org.hibernate.LazyInitializationException异常解决</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-21T21:10:15+08:00">
-                2017-08-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>异常信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">org.hibernate.LazyInitializationException: could not initialize proxy - no Session</div><div class="line">at org.hibernate.proxy.AbstractLazyInitializer.initialize(AbstractLazyInitializer.java:164)</div><div class="line">at org.hibernate.proxy.AbstractLazyInitializer.getImplementation(AbstractLazyInitializer.java:285)</div><div class="line">at org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer.invoke(JavassistLazyInitializer.java:185)</div><div class="line">at com.future.entities.Card_</div><div class="line">_javassist_1.getCardNo(Card_</div><div class="line">_javassist_1.java)</div><div class="line">at com.future.test.TestCRUD.testPage(TestCRUD.java:88)</div><div class="line">at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</div><div class="line">at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)</div><div class="line">at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</div><div class="line">at java.lang.reflect.Method.invoke(Method.java:606)</div><div class="line">at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)</div><div class="line">at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)</div><div class="line">at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)</div><div class="line">at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)</div><div class="line">at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)</div><div class="line">at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)</div><div class="line">at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)</div><div class="line">at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)</div><div class="line">at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:252)</div><div class="line">at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:94)</div><div class="line">at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)</div><div class="line">at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)</div><div class="line">at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)</div><div class="line">at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)</div><div class="line">at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)</div><div class="line">at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)</div><div class="line">at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)</div><div class="line">at org.junit.runners.ParentRunner.run(ParentRunner.java:363)</div><div class="line">at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191)</div><div class="line">at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:49)</div><div class="line">at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)</div><div class="line">at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467)</div><div class="line">at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683)</div><div class="line">at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390)</div><div class="line">at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197)</div></pre></td></tr></table></figure></p>
-<p>解决方式：</p>
-<p>1、在配置文件web.xml中加入如下配置：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>openSessionInViewFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">init-param</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">param-name</span>&gt;</span>singleSession<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">param-value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">init-param</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">param-name</span>&gt;</span>sessionFactoryBeanName<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">param-value</span>&gt;</span>sessionFactory<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>2、在hibernate属性中添加：hibernate.enable_lazy_load_no_trans<br>如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;prop key=&quot;hibernate.enable_lazy_load_no_trans&quot;&gt;true&lt;/prop&gt;</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/07/22/localResizeIMG安卓手机无响应/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jax">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/class.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="You define me">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/22/localResizeIMG安卓手机无响应/" itemprop="url">localResizeIMG安卓手机无响应</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-22T22:29:22+08:00">
-                2017-07-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>使用LocalResizeIMG在H5端进行图片上传在安卓上遇到的问题。<br>在安卓机上onchange事件没有被调用问题。  </p>
-<p>原因1：</p>
-<blockquote>
-<p>插件重新定义了file标签。所以需要重新绑定onchange事件。  </p>
-</blockquote>
-<p>原因2</p>
-<blockquote>
-<p>file标签accept属性改为：accept=”image/*” 。 添加capture=”camera” 或者 capture=””</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/07/06/如何找出nginx配置文件的所在位置/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jax">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/class.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="You define me">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/06/如何找出nginx配置文件的所在位置/" itemprop="url">如何找出nginx配置文件的所在位置</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-06T23:47:46+08:00">
-                2017-07-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>有时候在操作一台陌生的nginx服务器的时候，需要知道配置文件在哪里，下面教大家一种简单的方法：  </p>
-<blockquote>
-<p>1.先找出nginx可执行文件的路径 </p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps -ef | grep nginx</div></pre></td></tr></table></figure>
-<img src="/2017/07/06/如何找出nginx配置文件的所在位置/DB04B59F-AE55-49C4-858F-2B350AF6107A.png" alt="DB04B59F-AE55-49C4-858F-2B350AF6107A.png" title="">  
-<p>图中显示的就是nginx可执行文件的路径  </p>
-<blockquote>
-<p>2.找出配置文件路径 </p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/openresty/nginx/sbin/nginx -t</div></pre></td></tr></table></figure>
-<img src="/2017/07/06/如何找出nginx配置文件的所在位置/20160115161228479.jpg" alt="20160115161228479.jpg" title="">
-<p>这样配置文件的路径就显示出来啦~</p>
-<blockquote>
-<p>3.加载配置。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/nginx/sbin/nginx -s reload</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
   </article>
 
 
@@ -1558,7 +1481,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1582,94 +1505,95 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image"
-                src="/images/class.jpg"
-                alt="Jax" />
-            
-              <p class="site-author-name" itemprop="name">Jax</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/class.jpg"
+               alt="Jax" />
+          <p class="site-author-name" itemprop="name">Jax</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
           </div>
 
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">26</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
           
 
           
-            <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/txlaijava" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="mailto:5681540@qq.com" target="_blank" title="E-Mail">
-                      
-                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  </span>
-                
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              
             </div>
           
 
-          
-          
+        </nav>
 
-          
-          
+        
 
+        <div class="links-of-author motion-element">
           
-
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/txlaijava" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-知乎"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
         </div>
-      </section>
 
-      
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://biezhi.me/" title="王爵的技术博客" target="_blank">王爵的技术博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.vichily.com/2017/02/28/%E7%AC%BC%E7%BB%9F%E7%9A%84%E5%89%8D%E7%AB%AF/#NPM" title="前端" target="_blank">前端</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
 
       
 
@@ -1683,46 +1607,38 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2014 &mdash; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Jax</span>
-
-  
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
 
-
-
-
-
-
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
 
 
         
-
-
-
-
-
-
 
         
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
   </div>
 
   
@@ -1745,52 +1661,31 @@
 
 
 
-
-
-
-
-
-
-
-
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
@@ -1798,9 +1693,9 @@
   
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
 
 
 
@@ -1809,11 +1704,12 @@
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
   
+
 
 
   
@@ -1826,50 +1722,17 @@
 
 
 
-
   
-
-
-
-
-
-  
-
-
-
-
-
-
-
-<!-- LOCAL: You can save these files to your site and update links -->
-    
-        
-        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
-        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
-    
-<!-- END LOCAL -->
-
-
-    
-
-    
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
   
@@ -1880,6 +1743,9 @@
   
 
   
+
+  
+
 
 </body>
 </html>
