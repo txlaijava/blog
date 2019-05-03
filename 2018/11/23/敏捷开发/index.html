@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="学习," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="当时提出敏捷开发的这个人或者这个群体，提出来的是敏捷开发的四个价值观：  以人为本：重视个体间的合作互动 目标导向：我们最终交付的是“可使用的软件”，而不是一堆繁重的文档 客户为先：理解客户需求，与客户合作 拥抱改变：客户会在不断变化需求的过程中明晰真正需要的，因此敏捷需要拥抱变化  了解Scrum 是什么很重要">
+<meta name="keywords" content="学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何在团队中推行Scrum敏捷开发">
+<meta property="og:url" content="http://17wpw.com/2018/11/23/敏捷开发/index.html">
+<meta property="og:site_name" content="You define me">
+<meta property="og:description" content="当时提出敏捷开发的这个人或者这个群体，提出来的是敏捷开发的四个价值观：  以人为本：重视个体间的合作互动 目标导向：我们最终交付的是“可使用的软件”，而不是一堆繁重的文档 客户为先：理解客户需求，与客户合作 拥抱改变：客户会在不断变化需求的过程中明晰真正需要的，因此敏捷需要拥抱变化  了解Scrum 是什么很重要">
+<meta property="og:image" content="http://rblc.oss-cn-qingdao.aliyuncs.com/other/txl/a2f658d627d43363b1a47661dd3ac682_r.jpg">
+<meta property="og:image" content="https://wt-box.worktile.com/public/36057a6f-5447-4dd5-be8d-9743b4e46fd8">
+<meta property="og:image" content="http://rblc.oss-cn-qingdao.aliyuncs.com/other/txl/v2-fe6d64fd555793098c53d13764b4b6a8_hd.jpg">
+<meta property="og:updated_time" content="2019-05-03T11:35:42.499Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何在团队中推行Scrum敏捷开发">
+<meta name="twitter:description" content="当时提出敏捷开发的这个人或者这个群体，提出来的是敏捷开发的四个价值观：  以人为本：重视个体间的合作互动 目标导向：我们最终交付的是“可使用的软件”，而不是一堆繁重的文档 客户为先：理解客户需求，与客户合作 拥抱改变：客户会在不断变化需求的过程中明晰真正需要的，因此敏捷需要拥抱变化  了解Scrum 是什么很重要">
+<meta name="twitter:image" content="http://rblc.oss-cn-qingdao.aliyuncs.com/other/txl/a2f658d627d43363b1a47661dd3ac682_r.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://17wpw.com/2018/11/23/敏捷开发/"/>
+
+
+
+
+
+  <title>如何在团队中推行Scrum敏捷开发 | You define me</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?92096bcd95c9aa461a04e26f626852fd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">You define me</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2018/11/23/敏捷开发/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jax">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/class.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="You define me">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">如何在团队中推行Scrum敏捷开发</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-23T17:01:00+08:00">
+                2018-11-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/23/敏捷开发/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/11/23/敏捷开发/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>当时提出敏捷开发的这个人或者这个群体，<br>提出来的是敏捷开发的四个价值观：</p>
+<ul>
+<li><strong>以人为本：重视个体间的合作互动</strong></li>
+<li><strong>目标导向：我们最终交付的是“可使用的软件”，而不是一堆繁重的文档</strong></li>
+<li><strong>客户为先：理解客户需求，与客户合作</strong></li>
+<li><strong>拥抱改变：客户会在不断变化需求的过程中明晰真正需要的，因此敏捷需要拥抱变化</strong></li>
+</ul>
+<h2 id="了解Scrum-是什么很重要"><a href="#了解Scrum-是什么很重要" class="headerlink" title="了解Scrum 是什么很重要"></a>了解Scrum 是什么很重要</h2><p><img src="http://rblc.oss-cn-qingdao.aliyuncs.com/other/txl/a2f658d627d43363b1a47661dd3ac682_r.jpg" alt="Scrum是什么"></p>
+<a id="more"></a>
+<h2 id="Scrum的主要角色"><a href="#Scrum的主要角色" class="headerlink" title="Scrum的主要角色"></a>Scrum的主要角色</h2><p>Scrum 主要定义了三个角色：<strong>Scrum Master</strong>，<strong>Product Owner</strong>，<strong>Development Team</strong> 。</p>
+<p><strong>Scrum Master</strong> 不是Project Manager， 他的主要的工作是要保证这个团队执行 Scrum 的顺畅。<strong>Product Owner</strong> 是真正对产品负责的人。如果我们是做产品研发的话，产品经理就是Product Owner。如果我们是做项目开发，客户就是Product Owner，这也体现了我们刚刚提到，我们并不是和客户去谈判，而是真正把客户放在我们的这种流程中，真正与他合作。第三种 <strong>Development Team</strong> 就是干活儿的。</p>
+<p>所以 <strong>在Scrum 里面没有管理者的概念</strong> 。另外，Scrum 里面实际上所有的真正为最终产出的软件付出的，都叫Development Team。这个地方也体现了一个Scrum 的观点，就是它希望能够打造Cross-Functional Team，即在这个团队中的所有人可以做所有的事情，每个人都是Development Team。</p>
+<h2 id="Scrum的开发流程"><a href="#Scrum的开发流程" class="headerlink" title="Scrum的开发流程"></a>Scrum的开发流程</h2><p><img src="https://wt-box.worktile.com/public/36057a6f-5447-4dd5-be8d-9743b4e46fd8" alt="开发流程"></p>
+<h3 id="Step1-需要一个-Vision"><a href="#Step1-需要一个-Vision" class="headerlink" title="Step1. 需要一个 Vision"></a>Step1. 需要一个 Vision</h3><p>真正Scrum 的流程是什么样子的？首先，我们需要有一个Vision ，就是我们所做的产品或者所做项目的愿景。这个需要所有Team Members，包括Product Owner 一起确定，然后大家朝着同样的目标前进。</p>
+<p>在产品开发中，我们可以以每个迭代为一个Vision。</p>
+<h3 id="Step2-维护Backlog（计划）"><a href="#Step2-维护Backlog（计划）" class="headerlink" title="Step2. 维护Backlog（计划）"></a>Step2. 维护Backlog（计划）</h3><p>Vision 出现后，Product Owner 会维护一个Scrum 中我们提到的第一个文档，即 Backlog。它可以理解成我们从产品当中，从各个角度收集的需求， Product Owner 要做的事情就是维护Product Backlog，并且将Backlog 一条一条的按照优先级排好顺序。Product Owner 是唯一有权利维护这个列表的人。</p>
+<h3 id="Step3-拆分Sprint-迭代"><a href="#Step3-拆分Sprint-迭代" class="headerlink" title="Step3. 拆分Sprint(迭代)"></a>Step3. 拆分Sprint(迭代)</h3><p>随后我们会针对这个Scrum 把它拆分成一个个的Sprint ，就是开发周期。然后将 Backlog 里面的项目添加到Sprint 中去，成为Sprint Backlog。每一个Sprint 开始的时候，需要进行一个Sprint Plan。</p>
+<h3 id="Step4-运行Sprint-Plan"><a href="#Step4-运行Sprint-Plan" class="headerlink" title="Step4. 运行Sprint Plan"></a>Step4. 运行Sprint Plan</h3><p>Sprint Plan 就是整个团队一起，通过Backlog 从优先级最高的这个item 开始挑，挑出Product<br>Owner 对Backlog 进行介绍。紧接着的是，大家将Backlog 拆分成单个的Task，每一个成员在每一天的工作当中领Task，完成Task。</p>
+<p>由此可见，在完美的Scrum 里面，是没有任务指派一说的。每个成员会根据任务、完成度，去及时更新任务的状态。为了让大家了解整个项目的进度，Scrum会引入白板（在墙上或者在板子上钉好多的小纸条，让大家明确项目进度和任务完成情况）。</p>
+<h3 id="Step5-Daily-Scrum"><a href="#Step5-Daily-Scrum" class="headerlink" title="Step5. Daily Scrum"></a>Step5. Daily Scrum</h3><p>在Scrum run 起来之后，还有一件事情是Daily Scrum 。在 Daily Scrum 中，每个成员只需三件事情：</p>
+<ol>
+<li>昨天我完成了哪些事情</li>
+<li>今天我打算做哪些事情</li>
+<li>我有遇到哪些问题，如何解决</li>
+</ol>
+<p>Daily Scrum 一般来说会控制在15分钟之内，而且所有的成员必须要站着开会。</p>
+<h3 id="Step6-Sprint-Review"><a href="#Step6-Sprint-Review" class="headerlink" title="Step6. Sprint Review"></a>Step6. Sprint Review</h3><p>当Scrum 结束后，我们会产出一个产出物。这个产出物在Scrum 里面，可以是一个可以运行的软件，也可以是一个可展示的功能。之所以这么说是因为有一个Sprint Review 的阶段，我们需要通过Demo 在Product Owner以及其他的Stake Holders 面前，现场演示你做好的东西（而不是给大家讲你做了什么）。</p>
+<h3 id="Step7-Retrospective"><a href="#Step7-Retrospective" class="headerlink" title="Step7. Retrospective"></a>Step7. Retrospective</h3><p>在Sprint Review 结束之后就是Retrospective。我们整个团队的人都要坐下来聊一聊，我们的Sprint（迭代）做得好不好，有哪些地方需要修改。</p>
+<h3 id="整个过程都结束了，接下来干啥？"><a href="#整个过程都结束了，接下来干啥？" class="headerlink" title="整个过程都结束了，接下来干啥？"></a>整个过程都结束了，接下来干啥？</h3><p>这时候我们可以选择发布新版本、获取用户反馈、规划新功能或者修复bug。持续性的发布、学习、再建，这一系列过程让敏捷在管理方法中异军突起。</p>
+<p>比起单纯的靠产品需求清单来执行项目，在敏捷指导下，我们可以通过不断发布新版本来看看客户的反馈。相比花一年时间来开发和发布，然后发现缺失核心功能的传统方法，敏捷能在每次迭代后迅速发现问题，并在下次迭代中及时调整。<br><img src="http://rblc.oss-cn-qingdao.aliyuncs.com/other/txl/v2-fe6d64fd555793098c53d13764b4b6a8_hd.jpg"></p>
+<h2 id="研发团队如何使用敏捷"><a href="#研发团队如何使用敏捷" class="headerlink" title="研发团队如何使用敏捷"></a>研发团队如何使用敏捷</h2><p>在Scrum中，产品经理和项目团队紧密协作，一起定义目标、梳理产品需求清单。清单中通常会包含产品特性、修复bug、非必要功能需求以及其他要在交付时完成的工作。</p>
+<p>有了产品清单，产品经理就会开始确定需求优先级，研发团队通常会在接下来30天左右的迭代中产出“潜在可交付版本”。当研发团队制定了迭代清单后，除了团队成员外，任何人都不能再加入需求。当一轮迭代完成后，全员再次分析需求清单、划分需求优先级，然后进入下一轮迭代。</p>
+<h2 id="我团队应用Scrum所收获到的"><a href="#我团队应用Scrum所收获到的" class="headerlink" title="我团队应用Scrum所收获到的"></a>我团队应用Scrum所收获到的</h2><ol>
+<li>团队工作效率提高。</li>
+<li>任务分工明确。</li>
+<li>有效的避免了迭代出来的东西无法符合产品需求。</li>
+<li>团队之间配合默契度有所提高。</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/学习/" rel="tag"># 学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/20/spring boot事务/" rel="next" title="Spring Boot中的事务管理">
+                <i class="fa fa-chevron-left"></i> Spring Boot中的事务管理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/23/dev收藏网站/" rel="prev" title="java开发工具类网站">
+                java开发工具类网站 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/class.jpg"
+                alt="Jax" />
+            
+              <p class="site-author-name" itemprop="name">Jax</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/txlaijava" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:5681540@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#了解Scrum-是什么很重要"><span class="nav-number">1.</span> <span class="nav-text">了解Scrum 是什么很重要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrum的主要角色"><span class="nav-number">2.</span> <span class="nav-text">Scrum的主要角色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrum的开发流程"><span class="nav-number">3.</span> <span class="nav-text">Scrum的开发流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Step1-需要一个-Vision"><span class="nav-number">3.1.</span> <span class="nav-text">Step1. 需要一个 Vision</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step2-维护Backlog（计划）"><span class="nav-number">3.2.</span> <span class="nav-text">Step2. 维护Backlog（计划）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step3-拆分Sprint-迭代"><span class="nav-number">3.3.</span> <span class="nav-text">Step3. 拆分Sprint(迭代)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step4-运行Sprint-Plan"><span class="nav-number">3.4.</span> <span class="nav-text">Step4. 运行Sprint Plan</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step5-Daily-Scrum"><span class="nav-number">3.5.</span> <span class="nav-text">Step5. Daily Scrum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step6-Sprint-Review"><span class="nav-number">3.6.</span> <span class="nav-text">Step6. Sprint Review</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step7-Retrospective"><span class="nav-number">3.7.</span> <span class="nav-text">Step7. Retrospective</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整个过程都结束了，接下来干啥？"><span class="nav-number">3.8.</span> <span class="nav-text">整个过程都结束了，接下来干啥？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#研发团队如何使用敏捷"><span class="nav-number">4.</span> <span class="nav-text">研发团队如何使用敏捷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我团队应用Scrum所收获到的"><span class="nav-number">5.</span> <span class="nav-text">我团队应用Scrum所收获到的</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2014 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jax</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: '1542963660000', 
+            owner: 'txlaijava',
+            repo: 'blog',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '1d131739f0c95ad8b2c775a35f0417a65362813e',
+            
+                client_id: 'b8c057d5498a9da21769'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
