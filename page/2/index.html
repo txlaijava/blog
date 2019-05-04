@@ -259,6 +259,136 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/12/22/微信登陆本地调试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jax">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/class.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="You define me">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/22/微信登陆本地调试/" itemprop="url">微信登陆本地调试</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-22T16:16:09+08:00">
+                2017-12-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="开通微信沙盒账号"><a href="#开通微信沙盒账号" class="headerlink" title="开通微信沙盒账号"></a>开通微信沙盒账号</h3><ul>
+<li>开通链接：<a href="https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login" target="_blank" rel="external">https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login</a>  </li>
+<li>扫码登陆之后可获得微信测试接口的appid、appsecret（上线之后替换成正式的即可）。沙盒环境拥有所有微信公众号的接口权限。  </li>
+</ul>
+<h3 id="配置微信登陆授权域名"><a href="#配置微信登陆授权域名" class="headerlink" title="配置微信登陆授权域名"></a>配置微信登陆授权域名</h3><ul>
+<li>在接口权限表中找到 网页服务-网页帐号-修改。点击修改填写本地环境ip地址（或者本地外网映射域名，推荐使用内外网穿透工具 <a href="https://natapp.cn/#download）；" target="_blank" rel="external">https://natapp.cn/#download）；</a><br><img src="/images/WechatIMG62.jpg" alt=""></li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/22/微信登陆本地调试/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/12/20/spring boot服务器部署 + nginx + https/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1403,132 +1533,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/05/15/height高度问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jax">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/class.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="You define me">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/15/height高度问题/" itemprop="url">$(window).height()高度获取误差</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-15T23:04:56+08:00">
-                2017-05-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在前端通过$(window).height()获取窗口高度总会有100px的误差。搜索得知问题：</p>
-<blockquote>
-<ol>
-<li>html顶部<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;html&gt;应该改成&lt;!DOCTYPE html&gt;  </div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1583,7 +1587,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

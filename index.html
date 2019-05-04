@@ -259,6 +259,175 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2018/12/20/基于阿里云MQ服务封装的spring-boot模块/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jax">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/class.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="You define me">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/20/基于阿里云MQ服务封装的spring-boot模块/" itemprop="url">spring boot starter for aliYunMQ</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-20T19:02:00+08:00">
+                2018-12-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="spring-boot-starter-for-aliYunMQ"><a href="#spring-boot-starter-for-aliYunMQ" class="headerlink" title="spring boot starter for aliYunMQ "></a>spring boot starter for aliYunMQ <a href="https://travis-ci.org/maihaoche/rocketmq-spring-boot-starter" target="_blank" rel="external"><img src="https://travis-ci.org/maihaoche/rocketmq-spring-boot-starter.svg?branch=master" alt="Build Status"></a></h1><p></p><p><a href=""><img src="https://maven-badges.herokuapp.com/maven-central/com.maihaoche/spring-boot-starter-rocketmq/badge.svg" alt="Maven Central" style="max-width:100%;"></a><a href="https://github.com/txlaijava/alimq/releases" target="_blank" rel="external"><img src="https://camo.githubusercontent.com/795f06dcbec8d5adcfadc1eb7a8ac9c7d5007fce/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f72656c656173652d646f776e6c6f61642d6f72616e67652e737667" alt="GitHub release" data-canonical-src="https://img.shields.io/badge/release-download-orange.svg" style="max-width:100%;"></a></p>
+<h3 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h3><p><a href="https://www.aliyun.com/product/rocketmq?spm=5176.8142029.search.1.e9396d3ebT5xIC" target="_blank" rel="external">消息队列 RocketMQ </a>是阿里巴巴自研消息产品，服务于整个集团已超过 13 年，经过阿里巴巴交易核心链路反复打磨与历年双十一购物狂欢节的严苛考验，是一个真正具备低延迟、高并发、高可用、高可靠，可支撑万亿级数据洪峰的分布式消息中间件。</p>
+<p>本模块实现了阿里云MQ的以下几个功能。</p>
+<ul>
+<li>[x] 同步发送消息</li>
+<li>[x] 异步发送消息</li>
+<li>[x] 广播发送消息</li>
+<li>[x] 有序发送和消费消息</li>
+<li>[x] 发送延时消息</li>
+<li>[x] 消息tag支持</li>
+<li>[x] 自动序列化和反序列化消息体</li>
+<li>[x] 发送事务消息</li>
+</ul>
+<h3 id="如何集成"><a href="#如何集成" class="headerlink" title="如何集成"></a>如何集成</h3><h5 id="1、添加依赖"><a href="#1、添加依赖" class="headerlink" title="1、添加依赖"></a>1、添加依赖</h5><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">  &lt;groupId&gt;com.shopping&lt;/groupId&gt;</div><div class="line">  &lt;artifactId&gt;spring-boot-starter-aliyunmq&lt;/artifactId&gt;</div><div class="line">  &lt;version&gt;1.0.0.RELEASE&lt;/version&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure>
+<p>因为我们有自己的maven私库，所以没有po到maven公有库里。配置代码库：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;repositories&gt;</div><div class="line">    &lt;repository&gt;</div><div class="line">        &lt;id&gt;shopping&lt;/id&gt;</div><div class="line">        &lt;url&gt;http://maven.sucok.com/content/groups/public&lt;/url&gt;</div><div class="line">    &lt;/repository&gt;</div><div class="line">    &lt;repository&gt;</div><div class="line">        &lt;id&gt;sonatype-nexus-staging&lt;/id&gt;</div><div class="line">        &lt;name&gt;Sonatype Nexus Staging&lt;/name&gt;</div><div class="line">        &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;</div><div class="line">        &lt;releases&gt;</div><div class="line">            &lt;enabled&gt;true&lt;/enabled&gt;</div><div class="line">        &lt;/releases&gt;</div><div class="line">        &lt;snapshots&gt;</div><div class="line">            &lt;enabled&gt;true&lt;/enabled&gt;</div><div class="line">        &lt;/snapshots&gt;</div><div class="line">    &lt;/repository&gt;</div><div class="line">&lt;/repositories&gt;</div></pre></td></tr></table></figure>
+<h4 id="2、添加配置"><a href="#2、添加配置" class="headerlink" title="2、添加配置"></a>2、添加配置</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">aliyun.mq.onsAddr=&lt;地址&gt;</div><div class="line">aliyun.mq.accessKey=</div><div class="line">aliyun.mq.secretKey=</div><div class="line">aliyun.mq.TopicIdRblc=</div><div class="line">#为false表示不引入producer，为true则producerId必须提供</div><div class="line">aliyun.mq.producer.enabled=true</div><div class="line">aliyun.mq.producer.producerId=</div><div class="line">#为false表示不引入consumer，为true则consumerId必须提供</div><div class="line">aliyun.mq.consumer.enabled=true</div></pre></td></tr></table></figure>
+<h4 id="3、添加生产者"><a href="#3、添加生产者" class="headerlink" title="3、添加生产者"></a>3、添加生产者</h4><blockquote>
+<p>顺序消息</p>
+</blockquote>
+<p>按照消息的发布顺序进行顺序消费（FIFO），支持全局顺序与分区顺序</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Autowired</span></div><div class="line">OrderMessageTemplate orderMessageTemplate;</div><div class="line"></div><div class="line"><span class="comment">//发送</span></div><div class="line">orderMessageTemplate(<span class="keyword">new</span> MessageEvent(<span class="string">"&#123;topic&#125;"</span>, <span class="string">"&#123;tag&#125;"</span>, msgBody));</div></pre></td></tr></table></figure>
+<blockquote>
+<p>普通消息,定时消息,延迟消息生产者</p>
+</blockquote>
+<p>消息可在指定的时间点(如2019/01/01 15:00:00)或延迟时间(如30分钟后)进行投递</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Autowired</span></div><div class="line">RocketMQTemplate rocketMQTemplate;</div><div class="line"></div><div class="line"><span class="comment">// 发送普通消息</span></div><div class="line">rocketMQTemplate.send(<span class="keyword">new</span> MessageEvent(<span class="string">"&#123;topic&#125;"</span>, <span class="string">"&#123;tag&#125;"</span>, msgBody));</div><div class="line"><span class="comment">// 延时消息，单位毫秒（ms），在指定延迟时间（当前时间之后）进行投递，例如消息在 3 秒后投递</span></div><div class="line">rocketMQTemplate.sendAsync(<span class="keyword">new</span> MessageEvent(<span class="string">"&#123;topic&#125;"</span>, <span class="string">"&#123;tag&#125;"</span>, msgBody),<span class="number">3000</span>);</div><div class="line"><span class="comment">// 延时消息，指定时间进行投递。例如消息在1天之后投递</span></div><div class="line">Calendar cal = Calendar.getInstance();</div><div class="line">cal.setTime(date);</div><div class="line">cal.add(Calendar.DATE, <span class="number">1</span>);</div><div class="line">rocketMQTemplate.sendAsync(<span class="keyword">new</span> MessageEvent(<span class="string">"&#123;topic&#125;"</span>, <span class="string">"&#123;tag&#125;"</span>, msgBody), cal.getTime(););</div></pre></td></tr></table></figure>
+<blockquote>
+<p>事务消息</p>
+</blockquote>
+<p>类似 X/Open XA 的分布事务功能，既可做到系统间的解耦，又能保证数据的最终一致性</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Autowired</span></div><div class="line">TransactionMessageTemplate messageTemplate;</div><div class="line"></div><div class="line"><span class="comment">// 发送事务消息</span></div><div class="line"><span class="comment">/**封装消息*/</span></div><div class="line">MessageEvent event = <span class="keyword">new</span> MessageEvent();</div><div class="line">event.setTopic(<span class="string">"base_sms"</span>);</div><div class="line">event.setTag(<span class="string">"Tag_user"</span>);</div><div class="line">   </div><div class="line">User user = <span class="keyword">new</span> User();</div><div class="line">user.setName(<span class="string">"Paul"</span>);</div><div class="line">user.setAdds(<span class="string">"北京市 昌平区 龙锦苑东二区"</span>);</div><div class="line"> <span class="comment">/**封装任意类型领域对象*/</span></div><div class="line">event.setDomain(user);</div><div class="line">    </div><div class="line">transactionMessageTemplate.send(event,<span class="keyword">new</span> TransactionExecuter() &#123;</div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> TransactionStatus <span class="title">executer</span><span class="params">(MessageEvent messageEvent, Long hashValue, Object arg)</span> </span>&#123;</div><div class="line">	String transactionId = TransactionDemo.createTransaction();</div><div class="line">	TransactionStatus status = TransactionDemo.checker();</div><div class="line">	<span class="keyword">return</span> status;</div><div class="line">&#125;</div><div class="line">),<span class="string">"参数对象,以本字符串示例,会传递给TransactionExecuter.executer"</span>);</div></pre></td></tr></table></figure>
+<h4 id="4、添加订阅者"><a href="#4、添加订阅者" class="headerlink" title="4、添加订阅者"></a>4、添加订阅者</h4><blockquote>
+<p>普通消息订阅者，实现AbstractMessageListener接口</p>
+</blockquote>
+<ul>
+<li>topic：支持SpringEl风格，取配置文件中的值。(必填)  </li>
+<li>tag：标签。* 标识所有。  (必填)  </li>
+<li>consumerId：消费者Id。  (必填)  </li>
+<li>consumeMode：消费模式 有序（单线程）或者无序（多线程） （默认无序）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RocketMQMessageListener</span>(topic = <span class="string">"$&#123;aliyun.mq.TopicIdRblc&#125;"</span>, tag = <span class="string">"giveCoupon"</span>, consumerId = <span class="string">"CID_shopping_giveCoupon"</span>, consumeMode = MessageExtConst.CONSUME_MODE_ORDERLY)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GiveCouponMessageListener</span> <span class="keyword">extends</span> <span class="title">AbstractMessageListener</span>&lt;<span class="title">MessageEvent</span>&gt; </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 消息处理</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handle</span><span class="params">(MessageEvent messageEvent)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">    	<span class="comment">//TODO 业务处理</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>顺序消息订阅者，实现AbstractMessageOrderListener</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RocketMQMessageListener</span>(topic = <span class="string">"$&#123;aliyun.mq.TopicIdRblc&#125;"</span>, tag = <span class="string">"giveCoupon"</span>, consumerId = <span class="string">"CID_shopping_giveCoupon"</span>, consumeMode = MessageExtConst.CONSUME_MODE_ORDERLY)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GiveCouponMessageListener</span> <span class="keyword">extends</span> <span class="title">AbstractMessageOrderListener</span> &lt;<span class="title">MessageEvent</span>&gt; </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 消息处理</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handle</span><span class="params">(MessageEvent messageEvent)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">    	<span class="comment">//TODO 业务处理</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="5、相关参考"><a href="#5、相关参考" class="headerlink" title="5、相关参考"></a>5、相关参考</h4><hr>
+<ul>
+<li>官网Demo地址：<a href="https://github.com/AliwareMQ/mq-demo" target="_blank" rel="external">https://github.com/AliwareMQ/mq-demo</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://17wpw.com/2018/11/27/frd内网穿透/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1455,136 +1624,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2017/12/22/微信登陆本地调试/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jax">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/class.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="You define me">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/22/微信登陆本地调试/" itemprop="url">微信登陆本地调试</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-22T16:16:09+08:00">
-                2017-12-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="开通微信沙盒账号"><a href="#开通微信沙盒账号" class="headerlink" title="开通微信沙盒账号"></a>开通微信沙盒账号</h3><ul>
-<li>开通链接：<a href="https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login" target="_blank" rel="external">https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login</a>  </li>
-<li>扫码登陆之后可获得微信测试接口的appid、appsecret（上线之后替换成正式的即可）。沙盒环境拥有所有微信公众号的接口权限。  </li>
-</ul>
-<h3 id="配置微信登陆授权域名"><a href="#配置微信登陆授权域名" class="headerlink" title="配置微信登陆授权域名"></a>配置微信登陆授权域名</h3><ul>
-<li>在接口权限表中找到 网页服务-网页帐号-修改。点击修改填写本地环境ip地址（或者本地外网映射域名，推荐使用内外网穿透工具 <a href="https://natapp.cn/#download）；" target="_blank" rel="external">https://natapp.cn/#download）；</a><br><img src="/images/WechatIMG62.jpg" alt=""></li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/22/微信登陆本地调试/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1639,7 +1678,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
