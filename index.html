@@ -259,6 +259,135 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2019/01/23/dubbo服务在docker容器中进行服务编排/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jax">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/class.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="You define me">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/23/dubbo服务在docker容器中进行服务编排/" itemprop="url">dubbo服务在docker容器中进行服务编排</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-23T17:01:00+08:00">
+                2019-01-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="问题起源"><a href="#问题起源" class="headerlink" title="问题起源"></a>问题起源</h2><p>最近在对现有业务系统进行Dubbo服务化重构，部署方式采用Docker部署，注册中心采用nacos。当部署完成之后会发现消费者服务能正常启动，服务在注册中心显示正常，但是进行服务调用的时候就会报错，对应的服务无响应信息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.alibaba.dubbo.remoting.RemotingException: message can not send, because channel is closed</div></pre></td></tr></table></figure></p>
+<h2 id="问题追溯"><a href="#问题追溯" class="headerlink" title="问题追溯"></a>问题追溯</h2><p>报错信息显示comsumer地址是172.18.<code>*</code>.<code>*</code>，这是docker容器的ip地址，猜想应该是容器之间无法进行调用。把docker服务启动参数修改成宿主机的内网地址，依然还是报错。是否应该是服务端口号不一致？查看dubbo端口绑定源码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">     * Register port and bind port for the provider, can be configured separately</div><div class="line">     * Configuration priority: environment variable -&gt; java system properties -&gt; port property in protocol config file</div><div class="line">     * -&gt; protocol default port</div><div class="line">     *</div><div class="line">     * @param protocolConfig</div><div class="line">     * @param name</div><div class="line">     * @return</div><div class="line">     */</div><div class="line">    private Integer findConfigedPorts(ProtocolConfig protocolConfig, String name, Map&lt;String, String&gt; map) &#123;</div><div class="line">        Integer portToBind = null;</div><div class="line"> </div><div class="line">        // parse bind port from environment</div><div class="line">        String port = getValueFromConfig(protocolConfig, Constants.DUBBO_PORT_TO_BIND);</div><div class="line">        portToBind = parsePort(port);</div><div class="line"> </div><div class="line">        // if there&apos;s no bind port found from environment, keep looking up.</div><div class="line">        if (portToBind == null) &#123;</div><div class="line">            portToBind = protocolConfig.getPort();</div><div class="line">            if (provider != null &amp;&amp; (portToBind == null || portToBind == 0)) &#123;</div><div class="line">                portToBind = provider.getPort();</div><div class="line">            &#125;</div><div class="line">            final int defaultPort = ExtensionLoader.getExtensionLoader(Protocol.class).getExtension(name).getDefaultPort();</div><div class="line">            if (portToBind == null || portToBind == 0) &#123;</div><div class="line">                portToBind = defaultPort;</div><div class="line">            &#125;</div><div class="line">            if (portToBind == null || portToBind &lt;= 0) &#123;</div><div class="line">                portToBind = getRandomPort(name);</div><div class="line">                if (portToBind == null || portToBind &lt; 0) &#123;</div><div class="line">                    portToBind = getAvailablePort(defaultPort);</div><div class="line">                    putRandomPort(name, portToBind);</div><div class="line">                &#125;</div><div class="line">                logger.warn(&quot;Use random available port(&quot; + portToBind + &quot;) for protocol &quot; + name);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"> </div><div class="line">        // save bind port, used as url&apos;s key later</div><div class="line">        map.put(Constants.BIND_PORT_KEY, String.valueOf(portToBind));</div><div class="line"> </div><div class="line">        // registry port, not used as bind port by default</div><div class="line">        String portToRegistryStr = getValueFromConfig(protocolConfig, Constants.DUBBO_PORT_TO_REGISTRY);</div><div class="line">        Integer portToRegistry = parsePort(portToRegistryStr);</div><div class="line">        if (portToRegistry == null) &#123;</div><div class="line">            portToRegistry = portToBind;</div><div class="line">        &#125;</div><div class="line"> </div><div class="line">        return portToRegistry;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>整个方法最核心的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String port = getValueFromConfig(protocolConfig, Constants.DUBBO_PORT_TO_BIND);</div></pre></td></tr></table></figure>
+<p>通过读取系统环境变量：DUBBO_PORT_TO_BIND获取暴露端口。如何修改这个参数呢？想到了docker三剑客之docker-compose。现在多个服务要逐个启动，正好使用compose可以解决这个问题。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/01/23/dubbo服务在docker容器中进行服务编排/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://17wpw.com/2018/12/20/基于阿里云MQ服务封装的spring-boot模块/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1469,159 +1598,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2018/06/23/CentOS服务器验证码乱码解决/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jax">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/class.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="You define me">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/23/CentOS服务器验证码乱码解决/" itemprop="url">CentOS服务器验证码乱码解决</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-23T17:01:00+08:00">
-                2018-06-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>线上环境验证码乱码乱码，本地环境正常，判断应该是由于线上linux系统缺少字体文件造成的。验证码使用的：Times New Roman 字体。那么到本地字体文件夹找到对应的字体文件，上传到服务器中。</p>
-<h3 id="Linux-CentOS-7-安装字体库"><a href="#Linux-CentOS-7-安装字体库" class="headerlink" title="Linux CentOS 7 安装字体库"></a>Linux CentOS 7 安装字体库</h3><p>在CentOS 4.x开始用fontconfig来安装字体库，所以输入以下命令即可：</p>
-<blockquote>
-<p>yum -y install fontconfig</p>
-</blockquote>
-<p>当看到下图的提示信息时说明已安装成功：<br><img src="https://img-blog.csdn.net/20160525145746674"></p>
-<p>这时在/usr/shared目录就可以看到fonts和fontconfig目录了（之前是没有的）：<br><img src="https://img-blog.csdn.net/20160525145907583"></p>
-<h3 id="添加中文字体"><a href="#添加中文字体" class="headerlink" title="添加中文字体"></a>添加中文字体</h3><p>首先在/usr/shared/fonts目录下新建一个目录chinese：<br><img src="https://img-blog.csdn.net/20160525151335431"></p>
-<p>然后就是将上面的两个字体上传至/usr/shared/fonts/chinese目录下即可： </p>
-<p>紧接着需要修改chinese目录的权限：</p>
-<blockquote>
-<p>chmod -R 755 /usr/share/fonts/chinese</p>
-</blockquote>
-<p>接下来需要安装ttmkfdir来搜索目录中所有的字体信息，并汇总生成fonts.scale文件，输入命令：</p>
-<blockquote>
-<p>yum -y install ttmkfdir</p>
-</blockquote>
-<p>然后执行ttmkfdir命令即可：</p>
-<blockquote>
-<p>ttmkfdir -e /usr/share/X11/fonts/encodings/encodings.dir</p>
-</blockquote>
-<p>最后一步就是修改字体配置文件了，首先通过编辑器打开配置文件：</p>
-<blockquote>
-<p>vi /etc/fonts/fonts.conf</p>
-</blockquote>
-<p>可以看到一个Font list，即字体列表，在这里需要把我们添加的中文字体位置加进去： </p>
-<p><img src="https://img-blog.csdn.net/20160525162529288"></p>
-<p>然后输入:wq保存退出，最后别忘了刷新内存中的字体缓存，这样就不用reboot重启了：</p>
-<blockquote>
-<p>fc-cache</p>
-</blockquote>
-<p>这样所有的步骤就算完成了，最后再次通过fc-list看一下字体列表： </p>
-<p><img src="https://img-blog.csdn.net/20160525164056044"></p>
-<p>可以看到已经成功安装上了中文字体，至此安装过程就全部结束，再次查看可以发现中文样式和内容均已可以正常显示了。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1676,7 +1652,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1698,7 +1674,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

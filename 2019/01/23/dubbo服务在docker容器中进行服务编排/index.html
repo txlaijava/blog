@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="docker,java," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="问题起源最近在对现有业务系统进行Dubbo服务化重构，部署方式采用Docker部署，注册中心采用nacos。当部署完成之后会发现消费者服务能正常启动，服务在注册中心显示正常，但是进行服务调用的时候就会报错，对应的服务无响应信息。1com.alibaba.dubbo.remoting.RemotingException: message can not send, because channel i">
+<meta name="keywords" content="docker,java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dubbo服务在docker容器中进行服务编排">
+<meta property="og:url" content="http://17wpw.com/2019/01/23/dubbo服务在docker容器中进行服务编排/index.html">
+<meta property="og:site_name" content="You define me">
+<meta property="og:description" content="问题起源最近在对现有业务系统进行Dubbo服务化重构，部署方式采用Docker部署，注册中心采用nacos。当部署完成之后会发现消费者服务能正常启动，服务在注册中心显示正常，但是进行服务调用的时候就会报错，对应的服务无响应信息。1com.alibaba.dubbo.remoting.RemotingException: message can not send, because channel i">
+<meta property="og:updated_time" content="2019-05-31T02:37:53.012Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="dubbo服务在docker容器中进行服务编排">
+<meta name="twitter:description" content="问题起源最近在对现有业务系统进行Dubbo服务化重构，部署方式采用Docker部署，注册中心采用nacos。当部署完成之后会发现消费者服务能正常启动，服务在注册中心显示正常，但是进行服务调用的时候就会报错，对应的服务无响应信息。1com.alibaba.dubbo.remoting.RemotingException: message can not send, because channel i">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://17wpw.com/2019/01/23/dubbo服务在docker容器中进行服务编排/"/>
+
+
+
+
+
+  <title>dubbo服务在docker容器中进行服务编排 | You define me</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?92096bcd95c9aa461a04e26f626852fd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">You define me</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2019/01/23/dubbo服务在docker容器中进行服务编排/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jax">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/class.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="You define me">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">dubbo服务在docker容器中进行服务编排</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-23T17:01:00+08:00">
+                2019-01-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/23/dubbo服务在docker容器中进行服务编排/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/01/23/dubbo服务在docker容器中进行服务编排/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="问题起源"><a href="#问题起源" class="headerlink" title="问题起源"></a>问题起源</h2><p>最近在对现有业务系统进行Dubbo服务化重构，部署方式采用Docker部署，注册中心采用nacos。当部署完成之后会发现消费者服务能正常启动，服务在注册中心显示正常，但是进行服务调用的时候就会报错，对应的服务无响应信息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.alibaba.dubbo.remoting.RemotingException: message can not send, because channel is closed</div></pre></td></tr></table></figure></p>
+<h2 id="问题追溯"><a href="#问题追溯" class="headerlink" title="问题追溯"></a>问题追溯</h2><p>报错信息显示comsumer地址是172.18.<code>*</code>.<code>*</code>，这是docker容器的ip地址，猜想应该是容器之间无法进行调用。把docker服务启动参数修改成宿主机的内网地址，依然还是报错。是否应该是服务端口号不一致？查看dubbo端口绑定源码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">     * Register port and bind port for the provider, can be configured separately</div><div class="line">     * Configuration priority: environment variable -&gt; java system properties -&gt; port property in protocol config file</div><div class="line">     * -&gt; protocol default port</div><div class="line">     *</div><div class="line">     * @param protocolConfig</div><div class="line">     * @param name</div><div class="line">     * @return</div><div class="line">     */</div><div class="line">    private Integer findConfigedPorts(ProtocolConfig protocolConfig, String name, Map&lt;String, String&gt; map) &#123;</div><div class="line">        Integer portToBind = null;</div><div class="line"> </div><div class="line">        // parse bind port from environment</div><div class="line">        String port = getValueFromConfig(protocolConfig, Constants.DUBBO_PORT_TO_BIND);</div><div class="line">        portToBind = parsePort(port);</div><div class="line"> </div><div class="line">        // if there&apos;s no bind port found from environment, keep looking up.</div><div class="line">        if (portToBind == null) &#123;</div><div class="line">            portToBind = protocolConfig.getPort();</div><div class="line">            if (provider != null &amp;&amp; (portToBind == null || portToBind == 0)) &#123;</div><div class="line">                portToBind = provider.getPort();</div><div class="line">            &#125;</div><div class="line">            final int defaultPort = ExtensionLoader.getExtensionLoader(Protocol.class).getExtension(name).getDefaultPort();</div><div class="line">            if (portToBind == null || portToBind == 0) &#123;</div><div class="line">                portToBind = defaultPort;</div><div class="line">            &#125;</div><div class="line">            if (portToBind == null || portToBind &lt;= 0) &#123;</div><div class="line">                portToBind = getRandomPort(name);</div><div class="line">                if (portToBind == null || portToBind &lt; 0) &#123;</div><div class="line">                    portToBind = getAvailablePort(defaultPort);</div><div class="line">                    putRandomPort(name, portToBind);</div><div class="line">                &#125;</div><div class="line">                logger.warn(&quot;Use random available port(&quot; + portToBind + &quot;) for protocol &quot; + name);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"> </div><div class="line">        // save bind port, used as url&apos;s key later</div><div class="line">        map.put(Constants.BIND_PORT_KEY, String.valueOf(portToBind));</div><div class="line"> </div><div class="line">        // registry port, not used as bind port by default</div><div class="line">        String portToRegistryStr = getValueFromConfig(protocolConfig, Constants.DUBBO_PORT_TO_REGISTRY);</div><div class="line">        Integer portToRegistry = parsePort(portToRegistryStr);</div><div class="line">        if (portToRegistry == null) &#123;</div><div class="line">            portToRegistry = portToBind;</div><div class="line">        &#125;</div><div class="line"> </div><div class="line">        return portToRegistry;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>整个方法最核心的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String port = getValueFromConfig(protocolConfig, Constants.DUBBO_PORT_TO_BIND);</div></pre></td></tr></table></figure>
+<p>通过读取系统环境变量：DUBBO_PORT_TO_BIND获取暴露端口。如何修改这个参数呢？想到了docker三剑客之docker-compose。现在多个服务要逐个启动，正好使用compose可以解决这个问题。<br><a id="more"></a></p>
+<h2 id="compose简介"><a href="#compose简介" class="headerlink" title="compose简介"></a>compose简介</h2><p>Compose 项目是 Docker 官方的开源项目，负责实现对 Docker 容器集群的快速编排。从功能上看，跟 OpenStack 中的 Heat 十分类似。</p>
+<p>其代码目前在 <a href="https://github.com/docker/compose" target="_blank" rel="external">https://github.com/docker/compose</a> 上开源。</p>
+<p>Compose 定位是 「定义和运行多个 Docker 容器的应用（Defining and running multi-container Docker applications）」，其前身是开源项目 Fig。</p>
+<p>通过第一部分中的介绍，我们知道使用一个 Dockerfile 模板文件，可以让用户很方便的定义一个单独的应用容器。然而，在日常工作中，经常会碰到需要多个容器相互配合来完成某项任务的情况。例如要实现一个 Web 项目，除了 Web 服务容器本身，往往还需要再加上后端的数据库服务容器，甚至还包括负载均衡容器等。</p>
+<p>Compose 恰好满足了这样的需求。它允许用户通过一个单独的 docker-compose.yml 模板文件（YAML 格式）来定义一组相关联的应用容器为一个项目（project）。</p>
+<p>Compose 中有两个重要的概念：</p>
+<p>服务 (service)：一个应用的容器，实际上可以包括若干运行相同镜像的容器实例。</p>
+<p>项目 (project)：由一组关联的应用容器组成的一个完整业务单元，在 docker-compose.yml 文件中定义。</p>
+<p>Compose 的默认管理对象是项目，通过子命令对项目中的一组容器进行便捷地生命周期管理。</p>
+<p>Compose 项目由 Python 编写，实现上调用了 Docker 服务提供的 API 来对容器进行管理。因此，只要所操作的平台支持 Docker API，就可以在其上利用 Compose 来进行编排管理。</p>
+<h2 id="编写docker-compose-yml文件"><a href="#编写docker-compose-yml文件" class="headerlink" title="编写docker-compose.yml文件"></a>编写docker-compose.yml文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">version: &apos;3&apos;</div><div class="line">services:</div><div class="line">  visit:</div><div class="line">    image: provider-visit:1.0.0</div><div class="line">    restart: always</div><div class="line">    ports:</div><div class="line">      - &quot;9203:9003&quot;</div><div class="line">      # 前面为注册到注册中心的端口，后面为docker监听的端口</div><div class="line">      - &quot;20883:20883&quot;</div><div class="line">    environment:</div><div class="line">      # 注册到注册中心的IP，这里我们选择宿主机的IP</div><div class="line">      DUBBO_IP_TO_REGISTRY: 172.31.138.159</div><div class="line">      # 注册到注册中心的端口</div><div class="line">      DUBBO_PORT_TO_REGISTRY: 20883</div><div class="line">      DUBBO_PORT_TO_BIND: 20883</div><div class="line">  theme:</div><div class="line">    image: provider-theme:1.0.0</div><div class="line">    restart: always</div><div class="line">    ports:</div><div class="line">      - &quot;9204:9004&quot;</div><div class="line">      # 前面为注册到注册中心的端口，后面为docker监听的端口</div><div class="line">      - &quot;20884:20884&quot;</div><div class="line">    environment:</div><div class="line">      # 注册到注册中心的IP，这里我们选择宿主机的IP</div><div class="line">      DUBBO_IP_TO_REGISTRY: 172.31.138.159</div><div class="line">      # 注册到注册中心的端口</div><div class="line">      DUBBO_PORT_TO_REGISTRY: 20884</div><div class="line">      DUBBO_PORT_TO_BIND: 20884</div></pre></td></tr></table></figure>
+<p>启动过程中碰到一个问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">found character &apos;\t&apos; that cannot start any token while scanning for the next token at line</div></pre></td></tr></table></figure></p>
+<p>查询得知是yml文件中有使用tab进行空格，yml是不允许使用tab的。修改之后正常启动。<br>服务启动之后，消费者调用恢复正常。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/docker-java/" rel="tag"># docker,java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/20/基于阿里云MQ服务封装的spring-boot模块/" rel="next" title="spring boot starter for aliYunMQ">
+                <i class="fa fa-chevron-left"></i> spring boot starter for aliYunMQ
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/class.jpg"
+                alt="Jax" />
+            
+              <p class="site-author-name" itemprop="name">Jax</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/txlaijava" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:5681540@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://tuchong.com/1515111/" target="_blank" title="摄影/图虫">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>摄影/图虫</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题起源"><span class="nav-number">1.</span> <span class="nav-text">问题起源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题追溯"><span class="nav-number">2.</span> <span class="nav-text">问题追溯</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#compose简介"><span class="nav-number">3.</span> <span class="nav-text">compose简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写docker-compose-yml文件"><span class="nav-number">4.</span> <span class="nav-text">编写docker-compose.yml文件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2014 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jax</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: '1548234060000', 
+            owner: 'txlaijava',
+            repo: 'blog',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '1d131739f0c95ad8b2c775a35f0417a65362813e',
+            
+                client_id: 'b8c057d5498a9da21769'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
