@@ -259,6 +259,408 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2019/04/11/使用nacos做注册中心导致log4j日志服务异常/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jax">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/class.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="You define me">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/11/使用nacos做注册中心导致log4j日志服务异常/" itemprop="url">使用nacos做注册中心导致log4j日志服务异常</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-11T17:01:00+08:00">
+                2019-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="问题起源"><a href="#问题起源" class="headerlink" title="问题起源"></a>问题起源</h2><p>日志框架用的log4j，接入阿里云Alibaba Cloud Log Log4j Appender做日志采集，以及错误预警。某天发现线上无法正常采集日志数据，怀疑是dubbo日志包冲突影响导致。报错信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">main DEBUG Using configurationFactory org.apache.logging.log4j.core.config.ConfigurationFactory$Factory@1153ee42</div><div class="line"></div><div class="line">main DEBUG Closing JarURLInputStream sun.net.www.protocol.jar.JarURLConnection$JarURLInputStream@31fcad71</div><div class="line"></div><div class="line">main WARN No Root logger was configured, creating default ERROR-level Root logger with Console appender</div></pre></td></tr></table></figure></p>
+<h2 id="问题追溯"><a href="#问题追溯" class="headerlink" title="问题追溯"></a>问题追溯</h2><p>IDEA有个功能，可以查看maven项目依赖总览图。如图所示功能：<br><img src="http://rblc.oss-cn-qingdao.aliyuncs.com/ftp/1561100811530.jpg" alt="image"><br>这样很方便就可以找到是哪个jar包包含的依赖有冲突。<br>去除了dubbo的log4j依赖，问题依然重现。再判断是否nacos导致的。查看nacos源码发现以下代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">Log4J2NacosLogging</span><span class="params">()</span> </span>&#123;</div><div class="line">        String location = <span class="keyword">this</span>.getLocation(<span class="string">"classpath:nacos-log4j2.xml"</span>);</div><div class="line">        <span class="keyword">if</span>(!StringUtils.isBlank(location)) &#123;</div><div class="line">            <span class="keyword">this</span>.locationList.add(location);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">loadConfiguration</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(!<span class="keyword">this</span>.locationList.isEmpty()) &#123;</div><div class="line">            List configList = <span class="keyword">this</span>.findConfig(<span class="keyword">this</span>.getCurrentlySupportedConfigLocations());</div><div class="line">            <span class="keyword">if</span>(configList != <span class="keyword">null</span>) &#123;</div><div class="line">                <span class="keyword">this</span>.locationList.addAll(configList);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            ArrayList configurations = <span class="keyword">new</span> ArrayList();</div><div class="line">            LoggerContext loggerContext = (LoggerContext)LogManager.getContext(<span class="keyword">false</span>);</div><div class="line">            Iterator compositeConfiguration = <span class="keyword">this</span>.locationList.iterator();</div><div class="line"></div><div class="line">            <span class="keyword">while</span>(compositeConfiguration.hasNext()) &#123;</div><div class="line">                String location = (String)compositeConfiguration.next();</div><div class="line"></div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    Configuration e = <span class="keyword">this</span>.loadConfiguration(loggerContext, location);</div><div class="line">                    <span class="keyword">if</span>(e <span class="keyword">instanceof</span> AbstractConfiguration) &#123;</div><div class="line">                        configurations.add((AbstractConfiguration)e);</div><div class="line">                    &#125;</div><div class="line">                &#125; <span class="keyword">catch</span> (Exception var7) &#123;</div><div class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"Could not initialize Log4J2 Nacos logging from "</span> + location, var7);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            CompositeConfiguration compositeConfiguration1 = <span class="keyword">new</span> CompositeConfiguration(configurations);</div><div class="line">            loggerContext.start(compositeConfiguration1);</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p><strong>nacos注册中心会查找nacos的日志配置文件，如果找不到怎么办呢，再下面代码：</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> String[] getCurrentlySupportedConfigLocations() &#123;</div><div class="line">        ArrayList supportedConfigLocations = <span class="keyword">new</span> ArrayList();</div><div class="line">        <span class="keyword">if</span>(ClassUtils.isPresent(<span class="string">"com.fasterxml.jackson.dataformat.yaml.YAMLParser"</span>)) &#123;</div><div class="line">            Collections.addAll(supportedConfigLocations, <span class="keyword">new</span> String[]&#123;<span class="string">"log4j2.yaml"</span>, <span class="string">"log4j2.yml"</span>, <span class="string">"log4j2-test.yaml"</span>, <span class="string">"log4j2-test.yml"</span>&#125;);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(ClassUtils.isPresent(<span class="string">"com.fasterxml.jackson.databind.ObjectMapper"</span>)) &#123;</div><div class="line">            Collections.addAll(supportedConfigLocations, <span class="keyword">new</span> String[]&#123;<span class="string">"log4j2.json"</span>, <span class="string">"log4j2.jsn"</span>, <span class="string">"log4j2-test.json"</span>, <span class="string">"log4j2-test.jsn"</span>&#125;);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        supportedConfigLocations.add(<span class="string">"log4j2.xml"</span>);</div><div class="line">        supportedConfigLocations.add(<span class="string">"log4j2-test.xml"</span>);</div><div class="line">        <span class="keyword">return</span> (String[])supportedConfigLocations.toArray(<span class="keyword">new</span> String[supportedConfigLocations.size()]);</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>nacos会引用它默认的配置信息，导致之前项目的log4j配置失效。如何禁用nacos的默认配置，在它配置工厂类有写： </p>
+<pre><code class="java"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isDefaultConfigEnabled</span><span class="params">()</span> </span>{
+        String property = System.getProperty(<span class="string">"nacos.logging.default.config.enabled"</span>);
+        <span class="keyword">return</span> property == <span class="keyword">null</span> || BooleanUtils.toBoolean(property);
+}
+</code></pre>
+<p>我们只需要在系统变量中设置nacos.logging.default.config.enabled=false,然后把nacos的日志配置信息放到我们项目中的log4j文件中即可，在nacos-client源码中我们可以找到log4j以及logback的写法。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2019/03/12/打造云上DevOps，基于阿里云codepipeline，docker做持续交付实践/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jax">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/class.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="You define me">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/12/打造云上DevOps，基于阿里云codepipeline，docker做持续交付实践/" itemprop="url">打造云上DevOps，基于阿里云codepipeline，docker做持续交付实践</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-12T11:00:00+08:00">
+                2019-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>项目进行服务化改造之后，dubbo服务加上其他应用服务有上十个微服务需要构建，面临一个服务发布以及运维工作量剧增。业内比较常用的自动构建工具是Jenkins。看一下它的流程以及工具集：<br><img src="http://rblc.oss-cn-qingdao.aliyuncs.com/ftp/WechatIMG740.jpeg" alt="image"><br>可以看到，非常强大，同时也非常复杂。网上收集整理出来的几大问题。</p>
+<ol>
+<li>架构陈旧，性能底下。（250个slave，1000个job）。</li>
+<li>安全漏洞频发</li>
+<li>运维成本大</li>
+<li>缺乏完善的权限模型</li>
+</ol>
+<p>最终选型落在阿里云的codepipeline，目前免费中，估计后期肯定会收费，阿里云一贯的作风，先免费后收费。</p>
+<h2 id="codepipeline介绍"><a href="#codepipeline介绍" class="headerlink" title="codepipeline介绍"></a>codepipeline介绍</h2><p>阿里云CodePipeline是兼容Jenkins标准的、提供快速可靠的持续集成与持续交付服务。基于容器技术和阿里云基础服务架构，提供稳定和安全的代码/Docker编译构建，测试，扫描和部署的工具服务，并提供Pipeline As Code的编码级配置模式，满足应用程序和基础设施快速可靠的交付和更新。</p>
+<h2 id="开通CodePipeline"><a href="#开通CodePipeline" class="headerlink" title="开通CodePipeline"></a>开通CodePipeline</h2><ol>
+<li>开通CodePipeline<ol>
+<li>登录阿里云控制如后，通过如下导航找到CodePipeline。<br><img src="evernotecid://DFAC5A47-22E8-4AB2-BC28-74CF7EB6977B/wwwevernotecom/9163462/ENResource/p47" alt="cbedb20e3464587ff60fa781fd71ef8d.png"></li>
+<li>点击图中菜单按钮来到服务开通页面，点击开通服务按钮.</li>
+</ol>
+</li>
+<li>创建项目和运行项目<ol>
+<li>登录阿里云控制台后，通过菜单导航到CodePipeline后，出现如下界面。</li>
+<li>点击新建按键，来到创建项目导航页面。输入项目名称Cloud_DevOps，并选择Java项目，点击下一步，</li>
+<li>来到代码配置构建页面，在“仓库地址”中输入如下代码，这是一个普通的Java Web示例项目，可以通过Git Clone后查看其内容。</li>
+</ol>
+</li>
+</ol>
+<h2 id="CodePipeline架构"><a href="#CodePipeline架构" class="headerlink" title="CodePipeline架构"></a>CodePipeline架构</h2><p><img src="http://rblc.oss-cn-qingdao.aliyuncs.com/ftp/1561476421935.jpg" alt="image"></p>
+<h2 id="CodePipeline部署流程"><a href="#CodePipeline部署流程" class="headerlink" title="CodePipeline部署流程"></a>CodePipeline部署流程</h2><p><img src="http://rblc.oss-cn-qingdao.aliyuncs.com/ftp/demo.jpg" alt="image"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2019/02/22/阿里云服务器专有网络连接FTP失败/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jax">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/class.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="You define me">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/22/阿里云服务器专有网络连接FTP失败/" itemprop="url">阿里云服务器专有网络环境下链接FTP失败</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-22T17:01:00+08:00">
+                2019-02-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="问题显示"><a href="#问题显示" class="headerlink" title="问题显示"></a>问题显示</h2><p>服务器：阿里云ECS<br>网络环境：专有网络<br>FTP服务：vsftpd<br>连接异常：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">状态: 	已登录&lt;br&gt;</div><div class="line">状态: 	读取目录列表...  </div><div class="line">状态: 	服务器发回了不可路由的地址。被动模式失败。  </div><div class="line">命令: 	PORT 172,20,10,5,229,9  </div><div class="line">响应: 	500 Illegal PORT command.  </div><div class="line">错误: 	读取目录列表失败</div></pre></td></tr></table></figure></p>
+<p><img src="http://bbs.aliyun.com/attachment/Fid_239/239_1477160476054779_ccd835e45418095.png?27"></p>
+<h2 id="问题追溯"><a href="#问题追溯" class="headerlink" title="问题追溯"></a>问题追溯</h2><p>原因：专有网络的ECS系统中，没有公网IP地址，是经NAT与互联网连接，且ECS创建过程中的默认安全组规则没有针对FTP的快捷选项。建议在Linux系统里使用sftp协议替换ftp使用。 。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ol>
+<li><p>修改vsftpd配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">pasv_enable=YES  # 启用pasv模式</div><div class="line">pasv_min_port=30000 # 设置pasv模式中的可用端口范围（开始）</div><div class="line">pasv_max_port=30100 # 设置pasv模式中的可用端口范围（结束）</div><div class="line">pasv_address=39.108.4.89 # 设置pasv模式中的外网IP</div><div class="line">seccomp_sandbox=NO # 关闭 seccomp 功能</div></pre></td></tr></table></figure>
+</li>
+<li><p>在ECS实例安全组中，分别增加两条规则，允许相应的tcp端口访问（tcp 21端口，和 tcp 3000到30100端口）<br><img src="http://bbs.aliyun.com/attachment/thumb/Fid_239/239_1477160476054779_92929ba164b97e1.png?29"></p>
+</li>
+<li>重启vsftpd服务。客户端传输设置改成主动模式，fileZilla被动模式设置该生：退回到主动模式。<br><img src="http://bbs.aliyun.com/attachment/Fid_239/239_1477160476054779_463b15cac552169.png?14"></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://17wpw.com/2019/01/23/dubbo服务在docker容器中进行服务编排/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1217,387 +1619,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2018/09/13/单商户号绑定多公众号/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jax">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/class.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="You define me">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/13/单商户号绑定多公众号/" itemprop="url">微信支付多个公众号小程序共用一个商户号</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-13T17:01:00+08:00">
-                2018-09-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="可共用的条件"><a href="#可共用的条件" class="headerlink" title="可共用的条件"></a>可共用的条件</h3><ol>
-<li>微信公众号与小程序已经通过认证并且主体一致。</li>
-<li>如主体不一致，需提交授权函，经过微信支付业务审核后， APPID才可确认申请；</li>
-</ol>
-<h3 id="授权方式"><a href="#授权方式" class="headerlink" title="授权方式"></a>授权方式</h3><ol>
-<li>进入微信支付商户平台（pay.weixin.qq.com）。</li>
-<li>进入产品中心-&gt;appid授权管理-&gt;新增授权。<br><img src="https://ws2.sinaimg.cn/large/0069RVTdgy1fv7y993us5j31kw0hv0w1.jpg"></li>
-<li>新增授权之后，进入公众号或者小程序的微信支付，M-A授权管理同意授权。则关联成功。</li>
-</ol>
-<h3 id="小程序复用公众号认证"><a href="#小程序复用公众号认证" class="headerlink" title="小程序复用公众号认证"></a>小程序复用公众号认证</h3><ol>
-<li>进入公众号，关联小程序，点击详情：复用公众号认证资料</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2018/08/20/xxl-job/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jax">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/class.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="You define me">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/20/xxl-job/" itemprop="url">xxl-job使用</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-20T17:01:00+08:00">
-                2018-08-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="项目接入"><a href="#项目接入" class="headerlink" title="项目接入"></a>项目接入</h2><p><a href="http://www.xuxueli.com/xxl-job/#/?id=%E3%80%8A%E5%88%86%E5%B8%83%E5%BC%8F%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%B9%B3%E5%8F%B0xxl-job%E3%80%8B" target="_blank">接入文档</a></p>
-<h2 id="填坑1-执行器外网ip地址绑定"><a href="#填坑1-执行器外网ip地址绑定" class="headerlink" title="填坑1 执行器外网ip地址绑定"></a>填坑1 执行器外网ip地址绑定</h2><ul>
-<li>如果使用公网的IP填写到执行器的IP中，则会报错提示：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">java.net.BindException: Cannot assign requested address</div><div class="line">        at sun.nio.ch.Net.bind0(Native Method)</div><div class="line">        at sun.nio.ch.Net.bind(Net.java:<span class="number">433</span>)</div><div class="line">        at sun.nio.ch.Net.bind(Net.java:<span class="number">425</span>)</div><div class="line">        at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:<span class="number">223</span>)</div><div class="line">        at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:<span class="number">74</span>)</div><div class="line">        at org.eclipse.jetty.server.ServerConnector.open(ServerConnector.java:<span class="number">298</span>)</div><div class="line">        at org.eclipse.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:<span class="number">80</span>)</div><div class="line">        at org.eclipse.jetty.server.ServerConnector.doStart(ServerConnector.java:<span class="number">236</span>)</div><div class="line">        at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:<span class="number">68</span>)</div><div class="line">        at org.eclipse.jetty.server.Server.doStart(Server.java:<span class="number">431</span>)</div><div class="line">        at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:<span class="number">68</span>)</div><div class="line">        at com.xxl.job.core.rpc.netcom.jetty.server.JettyServer$<span class="number">1</span>.run(JettyServer.java:<span class="number">46</span>)</div><div class="line">        at java.lang.Thread.run(Thread.java:<span class="number">745</span>)</div></pre></td></tr></table></figure>
-<ul>
-<li>原因是：在云服务器中，一般只有一个内网网卡，外网IP地址不是直接配置在服务器中，而是配置在服务器外层的网关上，做了一层映射转发。所以jetty服务是无法绑定公网IP地址的。</li>
-<li>解决方法：ip填写0.0.0.0或者不填。然后在后台执行器管理中，手动修改online机器地址，把ip改成执行器的外网IP。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://17wpw.com/2018/06/23/苹果开发者账号问题-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jax">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/class.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="You define me">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/23/苹果开发者账号问题-1/" itemprop="url">苹果开发者账号问题</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-23T17:06:25+08:00">
-                2018-06-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="苹果开发者账号更新协议，需要新增手机号码。"><a href="#苹果开发者账号更新协议，需要新增手机号码。" class="headerlink" title="苹果开发者账号更新协议，需要新增手机号码。"></a>苹果开发者账号更新协议，需要新增手机号码。</h3><p>The Apple Developer Program License Agreement has been updated.</p>
-<p>In order to access certain membership resources, you must accept the latest license agreement. First, you’ll need to update the mobile phone number associated with your Apple ID. Your mobile phone number must be based in your country/region. Edit this number in the Account section of appleid.apple.com, and return to your developer account to continue.</p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>可以点击按钮进入appid.apple.com官网进行更改手机号码信息，但是需要回答安全问题，如忘记安全问题最便捷的办法是：<br>找一台iphone设备，点击设置，icloud账户，登出，再登入您的开发者账号，点击“姓名、电子邮箱、电话号码“，新增一个手机号码。完成之后再登入开发者平台，则可以看到同意协议选项。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1652,7 +1673,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1674,7 +1695,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

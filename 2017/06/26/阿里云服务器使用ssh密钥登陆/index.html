@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/51793/cn_zh/1492585020485/ecs%20_%20sshkeypair%20_%20create.png">
 <meta property="og:image" content="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/51793/cn_zh/1492585093376/ecs%20_%20sshkeypair%20_%20create%20_%20new.png">
 <meta property="og:image" content="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/51793/cn_zh/1492585253124/ecs%20_%20sshkeypair%20_%20create%20_%20new%20_%20privatekey.png">
-<meta property="og:updated_time" content="2017-08-22T01:51:23.000Z">
+<meta property="og:updated_time" content="2019-06-25T07:02:01.378Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="阿里云服务器使用ssh密钥登陆">
 <meta name="twitter:description" content="ssh密钥登陆相较于传统的用户名和密码认证方式，SSH 密钥对有以下特点：    仅适用于 Linux 实例。     SSH 密钥对登录认证更为安全可靠。     便于远程登录大量 Linux 实例，方便管理。      什么是 SSH 密钥对SSH 密钥对是通过一种加密算法生成的一对密钥：一个对外界公开，称为“公钥”；另一个您自己保留，称为“私钥”。 如果您已经将公钥配置在 Linux 实例中">
@@ -399,13 +399,14 @@
 <li>mac 连接vsftpd提示：服务器发回了不可路由的地址。使用服务器地址代替。<br>换回默认的21端口，问题解决。</li>
 </ul>
 </blockquote>
-<h2 id="ECS无法端口无法访问"><a href="#ECS无法端口无法访问" class="headerlink" title="ECS无法端口无法访问"></a>ECS无法端口无法访问</h2><blockquote>
+<h2 id="通过私钥获取对应的公钥"><a href="#通过私钥获取对应的公钥" class="headerlink" title="通过私钥获取对应的公钥"></a>通过私钥获取对应的公钥</h2><h3 id="本地为Windows操作系统"><a href="#本地为Windows操作系统" class="headerlink" title="本地为Windows操作系统"></a>本地为Windows操作系统</h3><p>启动PuTTYgen。<br>单击Load。<br>选择.ppk或.pem文件。<br>PuTTYgen会显示公钥信息。</p>
+<h3 id="本地为Linux或Mac系统"><a href="#本地为Linux或Mac系统" class="headerlink" title="本地为Linux或Mac系统"></a>本地为Linux或Mac系统</h3><p>运行ssh-keygen命令，并指定.pem文件的路径。</p>
+<figure class="highlight plain"><figcaption><span>-y -f</span><a href="/path_to_key_pair/my-key-pair.pem```">link</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">返回公钥信息，类似如下所示：</div></pre></td></tr></table></figure>
+<p>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDdlrdZwV3+GF9q7rhc6vYrExwT4WU4fsaRcVXGV2Mg9RHex21hl1au77GkmnIgukBZjywlQOT4GDdsJy2nBOdJPrCEBIP6t0Mk5aPkK/fctNuKjcmMMOA8YUT+sJKn3l7rCLkesE+S5880yNdRjBiiUy40kyr7Y+fqGVdSOHGMXZQPpkBtojcV14uAy0yV6/htEqGa/Jq4fH7bR6CYQ2XgH/hCap29Mdi/G5Tx1nbUKuIHdMWOPvjGACGcXclex+lHtTGiAIRG1riyNRVC47ZEVCxxxxxx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; 说明 如果该命令失败，请运行chmod 400 my-key-pair.pem命令更改权限，确保只有您才能查看该文件。</div><div class="line"></div><div class="line">## ECS无法端口无法访问</div><div class="line">&gt; + telnet验证端口  </div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>telnet xxx.xxx.xxx.xx 端口号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&gt; + 首先查看ECS安全组规则是否允许端口</div><div class="line">&gt; + 查看系统防火墙配置。  </div><div class="line">```html</div><div class="line"> servcie iptables stop           --临时关闭防火墙    </div><div class="line"> chkconfig iptables off          --永久关闭防火墙</div></pre></td></tr></table></figure></p>
 <ul>
-<li><p>telnet验证端口  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt; telnet xxx.xxx.xxx.xx 端口号</div><div class="line">&gt; ```  </div><div class="line"></div><div class="line">&gt; + 首先查看ECS安全组规则是否允许端口</div><div class="line">&gt; + 查看系统防火墙配置。  </div><div class="line">```html</div><div class="line"> servcie iptables stop           --临时关闭防火墙    </div><div class="line"> chkconfig iptables off          --永久关闭防火墙</div></pre></td></tr></table></figure>
-</li>
-<li><p>CentOS 7.2关闭防火墙<br>CentOS 7.0默认使用的是firewall作为防火墙，这里改为iptables防火墙步骤。</p>
-</li>
+<li>CentOS 7.2关闭防火墙<br>CentOS 7.0默认使用的是firewall作为防火墙，这里改为iptables防火墙步骤。</li>
 </ul>
 </blockquote>
 
@@ -538,7 +539,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -560,7 +561,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -615,7 +616,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是-SSH-密钥对"><span class="nav-number">1.</span> <span class="nav-text">什么是 SSH 密钥对</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优势"><span class="nav-number">2.</span> <span class="nav-text">优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#阿里云生成密钥"><span class="nav-number">3.</span> <span class="nav-text">阿里云生成密钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mac使用ssh密钥登陆"><span class="nav-number">4.</span> <span class="nav-text">mac使用ssh密钥登陆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ECS无法端口无法访问"><span class="nav-number">5.</span> <span class="nav-text">ECS无法端口无法访问</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是-SSH-密钥对"><span class="nav-number">1.</span> <span class="nav-text">什么是 SSH 密钥对</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优势"><span class="nav-number">2.</span> <span class="nav-text">优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#阿里云生成密钥"><span class="nav-number">3.</span> <span class="nav-text">阿里云生成密钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mac使用ssh密钥登陆"><span class="nav-number">4.</span> <span class="nav-text">mac使用ssh密钥登陆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过私钥获取对应的公钥"><span class="nav-number">5.</span> <span class="nav-text">通过私钥获取对应的公钥</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#本地为Windows操作系统"><span class="nav-number">5.1.</span> <span class="nav-text">本地为Windows操作系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地为Linux或Mac系统"><span class="nav-number">5.2.</span> <span class="nav-text">本地为Linux或Mac系统</span></a></li></ol></li></ol></div>
             
 
           </div>
